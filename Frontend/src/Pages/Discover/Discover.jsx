@@ -64,8 +64,7 @@ const Discover = () => {
   const renderProfiles = (users) => {
     if (users && users.length > 0) {
       return users.map((user) => (
-        <ProfileCard
-          key={user._id}
+        <ProfileCard          key={user._id}
           profileImageUrl={user?.picture}
           name={user?.name}
           rating={user?.rating ? user?.rating : 5}

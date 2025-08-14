@@ -4,6 +4,7 @@ export const skills = [
   "C++",
   "C#",
   "JavaScript",
+  "Web Development",
   "HTML",
   "CSS",
   "React",
@@ -77,5 +78,6 @@ export const skills = [
   "Asana",
   "Natural Language Processing",
   "Deep Learning",
+  "Machine Learning",
   "PyTorch",
 ];
