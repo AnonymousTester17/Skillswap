@@ -120,7 +120,7 @@ const Header = () => {
 
   return (
     <>
-      <Navbar key="md" expand="md" style={{ boxShadow: "0 4px 8px var(--secondary-bg)", zIndex: 998 }}>
+      <Navbar key="md" expand="md" style={{ boxShadow: "0 4px 8px var(--secondary-bg)", zIndex: 998, padding: "20px 25px"}}>
         <Container fluid>
           <Navbar.Brand
             href="/"
@@ -146,7 +146,7 @@ const Header = () => {
               {/* START: Updated Section */}
               <Nav className={`${styles.navContainer} justify-content-end flex-grow-1 pe-3 align-items-center`}>
                 {/* GROUP 1: Main links with underline effect */}
-                <div className={`${styles.NavLinks} d-flex`}>
+                <div className={`${styles.navLinks} d-flex`}>
                   <Nav.Link as={Link} to="/">
                     Home
                   </Nav.Link>
@@ -162,11 +162,11 @@ const Header = () => {
                     </>
                   ) : (
                     <>
-                      <Nav.Link as={Link} to="/about_us">
-                        About Us
-                      </Nav.Link>
                       <Nav.Link as={Link} to="/#why-skill-swap">
                         Why SkillSwap
+                      </Nav.Link>
+                      <Nav.Link as={Link} to="/about_us">
+                        About Us
                       </Nav.Link>
                     </>
                   )}
@@ -183,7 +183,11 @@ const Header = () => {
                     to="/login"
                     className={styles.loginRegisterLink}
                     style={{
-                      color: "var(--main)",
+                      backgroundColor: "var(--main)",
+                      borderRadius: "50px",
+                      padding: "10px 20px",
+                      fontWeight: "bold",
+                      color: "var(--primary-bg)",
                     }}
                   >
                     Login/Register

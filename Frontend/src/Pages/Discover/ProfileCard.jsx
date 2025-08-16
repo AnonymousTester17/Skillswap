@@ -6,9 +6,9 @@ const ProfileCard = ({ profileImageUrl, bio, name, skills, rating, username }) =
   return (
     <div className={styles.cardContainer}>
       <img className={styles.imgContainer} src={profileImageUrl} alt="user" />
-      <h3>{name}</h3>
-      <h6>Rating: {rating} ⭐</h6>
-      <p
+      <h3 className={styles.name}>{name}</h3>
+      <h6 className={styles.ratingHeading}>Rating: {rating} ⭐</h6>
+      <p className={styles.cardText}
         style={{
           whiteSpace: "nowrap",
           overflow: "hidden",
@@ -26,7 +26,7 @@ const ProfileCard = ({ profileImageUrl, bio, name, skills, rating, username }) =
         </Link>
       </div>
       <div className={styles.profskills}>
-        <h6>Skills</h6>
+        <h6 className={styles.skillsHeading}>Skills</h6>
         <div className={styles.profskillBoxes}>
           {skills.map((skill, index) => (
             <div key={index} className={styles.profskillBox}>

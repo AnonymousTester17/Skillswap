@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
-
+import styles from "./LandingPage.module.css";
 const LandingPage = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
 
@@ -32,6 +32,7 @@ const LandingPage = () => {
     flexDirection: "column",
     alignItems: "center",
     width: "100%",
+    marginTop: "10px",
   };
 
   const titleContainerStyle = {
@@ -47,9 +48,10 @@ const LandingPage = () => {
     textAlign: "center",
     color: "var(--main)",
     fontFamily: "Roboto",
-    backgroundColor: "var(--primary-bg)",
+    backgroundColor: "var(--secondary-bg)",
     width: "100%",
     fontSize: "3rem",
+    padding: "10px 0",
     fontWeight: 400,
     marginTop: "200px",
   };
@@ -58,9 +60,8 @@ const LandingPage = () => {
     fontFamily: "Montserrat, sans-serif",
     fontSize: "1.2rem",
     textAlign: "center",
-    color: "var(--primary-text)",
-    maxWidth: "1000px",
-    margin: "60px",
+    color: "var(--teritary-text)",
+    padding: "0 80px",
   };
 
   const imageStyle = {
@@ -166,47 +167,76 @@ const LandingPage = () => {
       <h2 style={contentTitleStyle}>WHY SKILL SWAP?</h2>
       <div id="why-skill-swap" style={textContainer}>
         <div style={descriptionStyle}>
-          At Skill Swap, we believe in the power of mutual learning and collaboration. Here's why Skill Swap is the
-          ultimate platform for skill acquisition and knowledge exchange:
           <br />
           <br />
-          <br />
-          <div style={{display: "flex", gap: "20px", borderRadius: "20px", backgroundColor: "var(--secondary-bg)"}}>
-            <img src="/assets/images/L1.jpg" alt="Learn From Experts" width="300px" height="300px" />
-            <div style={{padding: "35px 30px", textAlign: "left"}}>
-              <h4 style={{ color: "var(--main)", fontFamily: "Roboto"}}>➊ Learn From Experts:</h4>
-              <p
-              style={{
-                 paddingLeft: "25px",
-                 fontFamily: "Roboto",
-                 fontSize: "1rem"}}>
+
+          <div className={styles.LPCard}>
+            <img className={styles.LPImg} src="/assets/images/L1.jpg" alt="Learn From Experts" />
+            <div className={styles.LPContent}>
+              <h4 className={styles.LPHeading}>➊ Learn From Experts:</h4>
+              <p className={styles.LPText}>
                 Gain insights and practical knowledge directly from experienced mentors who excel in their respective
                 fields. Whether it's mastering a new programming language, honing your culinary skills, or delving into
                 the world of digital marketing, our mentors are here to guide you every step of the way.
               </p>
             </div>
           </div>
+
           <br />
           <br />
-          <h4 style={{ color: "#028477" }}>➋ Share Your Expertise:</h4> Have a skill or passion you're eager to share?
-          Skill Swap provides a platform for you to become a mentor yourself. Share your expertise with others, foster a
-          sense of community, and contribute to the growth of aspiring learners.
+          <div className={styles.LPCard}>
+            <img className={styles.LPImg} src="/assets/images/L2.svg" alt="Share Your Expertise" />
+            <div className={styles.LPContent}>
+              <h4 className={styles.LPHeading}>➋ Share Your Expertise:</h4>
+              <p className={styles.LPText}>
+                Have a skill or passion you're eager to share? Skill Swap provides a platform for you to become a mentor
+                yourself. Share your expertise with others, foster a sense of community, and contribute to the growth of
+                aspiring learners.
+              </p>
+            </div>
+          </div>
+
           <br />
           <br />
-          <h4 style={{ color: "#028477" }}>➌ Collaborative Environment:</h4> Our community thrives on collaboration.
-          Connect with like-minded individuals, participate in group projects, and engage in discussions that fuel
-          creativity and innovation. Skill Swap isn't just about individual growth—it's about collective advancement.
+          <div className={styles.LPCard}>
+            <img className={styles.LPImg} src="/assets/images/L3.svg" alt="Collaborative Environment" />
+            <div className={styles.LPContent}>
+              <h4 className={styles.LPHeading}>➌ Collaborative Environment:</h4>
+              <p className={styles.LPText}>
+                Our community thrives on collaboration. Connect with like-minded individuals, participate in group
+                projects, and engage in discussions that fuel creativity and innovation. Skill Swap isn't just about
+                individual growth—it's about collective advancement.
+              </p>
+            </div>
+          </div>
+
           <br />
           <br />
-          <h4 style={{ color: "#028477" }}>➍ Diverse Learning Opportunities:</h4> With Skill Swap, the possibilities are
-          endless and <b>free of cost</b>
-          . Explore a wide range of topics and disciplines, from traditional crafts to cutting-edge technologies. Our
-          diverse library of skills ensures there's something for everyone, regardless of your interests or background.
+          <div className={styles.LPCard}>
+            <img className={styles.LPImg} src="/assets/images/L4.jpg" alt="Diverse Learning Opportunities" />
+            <div className={styles.LPContent}>
+              <h4 className={styles.LPHeading}>➍ Diverse Learning Opportunities:</h4>
+              <p className={styles.LPText}>
+                With Skill Swap, the possibilities are endless and <b>free of cost</b>. Explore a wide range of topics
+                and disciplines, from traditional crafts to cutting-edge technologies. Our diverse library of skills
+                ensures there's something for everyone, regardless of your interests or background.
+              </p>
+            </div>
+          </div>
+
           <br />
           <br />
-          <h4 style={{ color: "#028477" }}>➎ Continuous Growth:</h4> Learning is a lifelong journey, and Skill Swap is
-          here to support you every step of the way. Whether you're a novice or a seasoned professional, our platform
-          empowers you to continuously expand your knowledge, challenge yourself, and embrace new opportunities.
+          <div className={styles.LPCard}>
+            <img className={styles.LPImg} src="/assets/images/L5.svg" alt="Continuous Growth" />
+            <div className={styles.LPContent}>
+              <h4 className={styles.LPHeading}>➎ Continuous Growth:</h4>
+              <p className={styles.LPText}>
+                Learning is a lifelong journey, and Skill Swap is here to support you every step of the way. Whether
+                you're a novice or a seasoned professional, our platform empowers you to continuously expand your
+                knowledge, challenge yourself, and embrace new opportunities.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>

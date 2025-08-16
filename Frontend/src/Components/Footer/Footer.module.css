@@ -1,0 +1,33 @@
+.footer {
+    background-color: var(--dark-bg);
+    padding: 70px 50px 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.footerLeft {
+    width: 45%;
+}
+
+.footerRight {
+    width: 55%;
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.list {
+    list-style-type: none;
+    font-family: "Roboto";
+    color: var(--secondary-bg);
+}
+.list > li {
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+.footerHeading {
+    color: var(--primary-bg);
+    font-weight: bold;
+    font-size: 1.5rem;
+
+}

@@ -9,14 +9,14 @@
   --secfont: "Montserrat", sans-serif;
 }
 
-h3 {
+.name {
   font-family: var(--secfont);
   margin: 5px 0;
   font-size: 0.5rem; /* Decreased font size */
   font-weight: bold; /* Added bold font weight */
 }
 
-h6 {
+.ratingHeading, .skillsHeading {
   font-family: var(--secfont);
   font-size: 0.8rem !important;
   margin: 5px 0;
@@ -24,7 +24,7 @@ h6 {
   font-weight: bolder;
 }
 
-p {
+.cardText {
   font-family: var(--secfont);
   font-size: 11px;
   line-height: 1.4;

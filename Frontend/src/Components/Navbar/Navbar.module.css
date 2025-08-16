@@ -1,5 +1,5 @@
 /* Original style for nav link font */
-.NavLinks > .nav-link {
+.navLinks > .nav-link {
   font-family: "Roboto", sans-serif;
   color: var(--secondary-text);
 }
@@ -7,22 +7,23 @@
 /* --- ✨ Styles for Hover Effects & Layout --- */
 
 /* This is the main container for the entire nav bar's right side */
-.nav-container {
+.navContainer {
   gap: 2rem; /* Creates the gap between the main links group and the login/user group */
 }
 
 /* This is the container for ONLY the links that get the underline */
-.NavLinks {
-  gap: 1.5rem; /* Creates a bit more gap between Home, About Us, etc. */
+/* This is the container for ONLY the links that get the underline */
+.navLinks {
+  gap: 1.5rem;
 }
 
 /* 1. Underline Transition for General Nav Links */
-.NavLinks > .nav-link {
+.navLinks > :global(.nav-link) {
   position: relative;
   padding-bottom: 5px;
 }
 
-.NavLinks > .nav-link::after {
+.navLinks > :global(.nav-link)::after {
   content: "";
   position: absolute;
   width: 0;
@@ -33,16 +34,15 @@
   transition: width 0.3s ease-in-out;
 }
 
-.NavLinks > .nav-link:hover::after {
+.navLinks > :global(.nav-link):hover::after {
   width: 100%;
 }
-
 /* 2. Scale Transition for Login/Register Link */
-.login-register-link {
+.loginRegisterLink {
   display: inline-block;
   transition: transform 0.2s ease-in-out;
 }
 
-.login-register-link:hover {
+.loginRegisterLink:hover {
   transform: scale(1.1);
 }

@@ -1,0 +1,40 @@
+.LPCard:nth-child(odd) {
+  display: flex;
+  gap: 20px;
+  border-radius: 20px;
+  background-color: var(--primary-bg);
+}
+
+.LPCard:nth-child(even) {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 20px;
+  border-radius: 20px;
+  background-color: var(--primary-bg);
+}
+
+.LPImg {
+  width: 300px;
+  height: 300px;
+}
+
+.LPContent {
+  padding: 35px 30px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+}
+
+.LPHeading {
+    color: var(--main);
+    font-family: "Roboto";
+}
+
+.LPText {
+  padding-left: 25px;
+  font-family: "Montserrat";
+  font-size: 1rem;
+  color: var(--teritary-text);
+}

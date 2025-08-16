@@ -77,7 +77,7 @@ const Discover = () => {
     }
     return <h1 className={styles.noUsersMessage}>No users to show</h1>;
   };
-
+  
   return (
     <div className={styles.discoverPage}>
       <div className={styles.contentContainer}>
