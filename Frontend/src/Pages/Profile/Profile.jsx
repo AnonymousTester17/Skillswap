@@ -1,5 +1,5 @@
 import React from "react";
-import "./Profile.css";
+import styles from "./Profile.module.css";
 import Box from "./Box";
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
@@ -81,7 +81,7 @@ const Profile = () => {
   };
 
   return (
-    <div className="profile-container">
+    <div className={styles["profile-container"]}>
       <div className="container" style={{ minHeight: "86vh" }}>
         {loading ? (
           <div className="row d-flex justify-content-center align-items-center" style={{ height: "50vh" }}>
@@ -89,35 +89,35 @@ const Profile = () => {
           </div>
         ) : (
           <>
-            <div className="profile-box">
-              <div className="left-div">
+            <div className={styles["profile-box"]}>
+              <div className={styles["left-div"]}>
                 {/* Profile Photo */}
-                <div className="profile-photo">
+                <div className={styles["profile-photo"]}>
                   <img src={profileUser?.picture} alt="Profile" />
                 </div>
                 {/* Name */}
-                <div className="misc">
-                  <h1 className="profile-name" style={{ marginLeft: "2rem" }}>
+                <div className={styles["misc"]}>
+                  <h1 className={styles["profile-name"]} style={{ marginLeft: "2rem" }}>
                     {profileUser?.name}
                   </h1>
                   {/* Rating */}
-                  <div className="rating" style={{ marginLeft: "2rem" }}>
+                  <div className={styles["rating"]} style={{ marginLeft: "2rem" }}>
                     {/* Rating stars */}
-                    <span className="rating-stars">
+                    <span className={styles["rating-stars"]}>
                       {profileUser?.rating
                         ? Array.from({ length: profileUser.rating }, (_, index) => <span key={index}>⭐</span>)
                         : "⭐⭐⭐⭐⭐"}
                     </span>
                     {/* Rating out of 5 */}
-                    <span className="rating-value">{profileUser?.rating ? profileUser?.rating : "5"}</span>
+                    <span className={styles["rating-value"]}>{profileUser?.rating ? profileUser?.rating : "5"}</span>
                   </div>
                   {/* Connect and Report Buttons */}
                   {
                     // If the user is the same as the logged in user, don't show the connect and report buttons
                     user?.username !== username && (
-                      <div className="buttons">
+                      <div className={styles["buttons"]}>
                         <button
-                          className="connect-button"
+                          className={styles["connect-button"]}
                           onClick={profileUser?.status === "Connect" ? connectHandler : undefined}
                         >
                           {connectLoading ? (
@@ -129,45 +129,45 @@ const Profile = () => {
                           )}
                         </button>
                         <Link to={`/report/${profileUser.username}`}>
-                          <button className="report-button">Report</button>
+                          <button className={styles["report-button"]}>Report</button>
                         </Link>
                         <Link to={`/rating/${profileUser.username}`}>
-                          <button className="report-button bg-success">Rate</button>
+                          <button className={`${styles["report-button"]} bg-success`}>Rate</button>
                         </Link>
                       </div>
                     )
                   }
                 </div>
               </div>
-              <div className="edit-links">
+              <div className={styles["edit-links"]}>
                 {user.username === username && (
                   <Link to="/edit_profile">
-                    <button className="edit-button">Edit Profile ✎</button>
+                    <button className={styles["edit-button"]}>Edit Profile ✎</button>
                   </Link>
                 )}
 
                 {/* Portfolio Links */}
-                <div className="portfolio-links">
+                <div className={styles["portfolio-links"]}>
                   <a
                     href={profileUser?.githubLink ? profileUser.githubLink : "#"}
                     target={profileUser?.githubLink ? "_blank" : "_self"}
-                    className="portfolio-link"
+                    className={styles["portfolio-link"]}
                   >
-                    <img src="/assets/images/github.png" className="link" alt="Github" />
+                    <img src="/assets/images/github.png" className={styles["link"]} alt="Github" />
                   </a>
                   <a
                     href={profileUser?.linkedinLink ? profileUser.linkedinLink : "#"}
                     target={profileUser?.linkedinLink ? "_blank" : "_self"}
-                    className="portfolio-link"
+                    className={styles["portfolio-link"]}
                   >
-                    <img src="/assets/images/linkedin.png" className="link" alt="LinkedIn" />
+                    <img src="/assets/images/linkedin.png" className={styles["link"]} alt="LinkedIn" />
                   </a>
                   <a
                     href={profileUser?.portfolioLink ? profileUser.portfolioLink : "#"}
                     target={profileUser?.portfolioLink ? "_blank" : "_self"}
-                    className="portfolio-link"
+                    className={styles["portfolio-link"]}
                   >
-                    <img src="/assets/images/link.png" className="link" alt="Portfolio" />
+                    <img src="/assets/images/link.png" className={styles["link"]} alt="Portfolio" />
                   </a>
                 </div>
               </div>
@@ -175,15 +175,15 @@ const Profile = () => {
 
             {/* Bio */}
             <h2>Bio</h2>
-            <p className="bio">{profileUser?.bio}</p>
+            <p className={styles["bio"]}>{profileUser?.bio}</p>
 
             {/* Skills */}
-            <div className="skills">
+            <div className={styles["skills"]}>
               <h2>Skills Proficient At</h2>
               {/* Render skill boxes here */}
-              <div className="skill-boxes">
+              <div className={styles["skill-boxes"]}>
                 {profileUser?.skillsProficientAt.map((skill, index) => (
-                  <div className="skill-box" style={{ fontSize: "16px" }} key={index}>
+                  <div className={styles["skill-box"]} style={{ fontSize: "16px" }} key={index}>
                     {skill}
                   </div>
                 ))}
@@ -191,10 +191,10 @@ const Profile = () => {
             </div>
 
             {/* Education */}
-            <div className="education">
+            <div className={styles["education"]}>
               <h2>Education</h2>
 
-              <div className="education-boxes">
+              <div className={styles["education-boxes"]}>
                 {/* Render education boxes here */}
                 {profileUser &&
                   profileUser?.education &&
@@ -213,10 +213,10 @@ const Profile = () => {
 
             {/* Projects */}
             {profileUser?.projects && profileUser?.projects.length > 0 && (
-              <div className="projects">
+              <div className={styles["projects"]}>
                 <h2>Projects</h2>
 
-                <div className="project-boxes">
+                <div className={styles["project-boxes"]}>
                   {
                     // Render project boxes here
                     profileUser &&

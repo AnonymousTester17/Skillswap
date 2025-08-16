@@ -1,14 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Montserrat:ital@0;1&family=Oswald:wght@200&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-html,
-body {
-  height: 100%;
-  background-color: #2d2d2d;
 }
 
 :root {
@@ -20,14 +16,13 @@ body {
   --red: #f56664;
   --basefont: "Oswald", sans-serif;
   --secfont: "Montserrat", sans-serif;
+  --main: oklch(76.9% 0.188 70.08);
+  --primary-bg: oklch(98.7% 0.022 95.277);
+  --secondary-bg: oklch(96.2% 0.059 95.617);
+  --primary-text: oklch(13% 0.028 261.692);
+  --secondary-text: oklch(27.8% 0.033 256.848);
 }
 
-body {
-  font-family: var(--basefont);
-  background-color: var(--grey);
-  color: white;
-  text-align: center;
-}
 ::-webkit-scrollbar-track {
   border: 5px solid #00211e;
   background-color: #00211e;

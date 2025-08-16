@@ -10,7 +10,7 @@ import { Link, useNavigate } from "react-router-dom";
 import io from "socket.io-client";
 import ScrollableFeed from "react-scrollable-feed";
 import RequestCard from "./RequestCard";
-import "./Chats.css";
+import styles from "./Chats.module.css";
 import Modal from "react-bootstrap/Modal";
 
 var socket;
@@ -58,7 +58,7 @@ const Chats = () => {
     socket.on("message recieved", (newMessageRecieved) => {
       console.log("New Message Recieved: ", newMessageRecieved);
       console.log("Selected Chat: ", selectedChat);
-      console.log("Selected Chat ID: ", selectedChat.id);
+      console.log("Selected Chat ID: ", selectedChat?.id);
       console.log("New Message Chat ID: ", newMessageRecieved.chatId._id);
       if (selectedChat && selectedChat.id === newMessageRecieved.chatId._id) {
         setChatMessages((prevState) => [...prevState, newMessageRecieved]);
@@ -271,12 +271,12 @@ const Chats = () => {
   };
 
   return (
-    <div className="container-overall">
-      <div className="container-right">
+    <div className={styles.containerOverall}>
+      <div className={styles.containerRight}>
         {/* Chat History */}
-        <div className="container-left">
+        <div className={styles.containerLeft}>
           {/* Tabs */}
-          <div className="tabs">
+          <div className={styles.tabs}>
             <Button
               className="chatButton"
               variant="secondary"
@@ -319,8 +319,8 @@ const Chats = () => {
 
           {/* Chat History or Requests List */}
           {showChatHistory && (
-            <div className="container-left">
-              <ListGroup className="chat-list">
+            <div className={styles.containerLeft}>
+              <ListGroup className={styles.chatList}>
                 {chatLoading ? (
                   <div className="row m-auto mt-5">
                     <Spinner animation="border" variant="primary" />
@@ -348,7 +348,7 @@ const Chats = () => {
             </div>
           )}
           {showRequests && (
-            <div className="container-left">
+            <div className={styles.containerLeft}>
               <ListGroup style={{ padding: "10px" }}>
                 {requestLoading ? (
                   <div className="row m-auto mt-5">
@@ -378,8 +378,8 @@ const Chats = () => {
             </div>
           )}
           {requestModalShow && (
-            <div className="modalBG" onClick={() => setRequestModalShow(false)}>
-              <div className="modalContent">
+            <div className={styles.modalBG} onClick={() => setRequestModalShow(false)}>
+              <div className={styles.modalContent}>
                 <h2 style={{ textAlign: "center" }}>Confirm your choice?</h2>
                 {selectedRequest && (
                   <RequestCard
@@ -416,7 +416,7 @@ const Chats = () => {
           )}
         </div>
         {/* Right Section */}
-        <div className="container-chat">
+        <div className={styles.containerChat}>
           {/* Profile Bar */}
           <div
             style={{
@@ -464,8 +464,6 @@ const Chats = () => {
               {selectedChat ? (
                 <ScrollableFeed forceScroll="true">
                   {chatMessages.map((message, index) => {
-                    // console.log("user:", user._id);
-                    // console.log("sender:", message.sender);
                     return (
                       <div
                         key={index}
@@ -557,19 +555,7 @@ const Chats = () => {
             zIndex: "500",
           }}
         >
-          <div
-            style={{
-              position: "absolute",
-              top: "50%",
-              left: "50%",
-              transform: "translate(-50%, -50%)",
-              backgroundColor: "#2d2d2d",
-              color: "#3BB4A1",
-              padding: "50px",
-              borderRadius: "10px",
-              zIndex: "1001",
-            }}
-          >
+          <div className={styles.modal}>
             <h3>Request a Meeting</h3>
             <Form>
               <Form.Group controlId="formDate" style={{ marginBottom: "20px", zIndex: "1001" }}>

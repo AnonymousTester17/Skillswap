@@ -1,5 +1,5 @@
 import React from "react";
-import "./AboutUs.css";
+import styles from "./AboutUs.module.css";
 
 const containerStyle = {
   display: "flex",
@@ -41,7 +41,7 @@ const imageContainerStyle = {
 
 const AboutUs = () => {
   return (
-    <div className="content1-container">
+    <div className={styles.content1-container}>
       <div style={contentContainerStyle}>
         <h2 style={titleStyle}>About Us</h2>
         <p style={descriptionStyle}>

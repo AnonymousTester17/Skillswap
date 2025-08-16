@@ -1,26 +1,36 @@
 import React from "react";
-import "./Card.css";
+import styles from "./Card.module.css";  // renamed to CSS module
 import { Link } from "react-router-dom";
 
 const ProfileCard = ({ profileImageUrl, bio, name, skills, rating, username }) => {
   return (
-    <div className="card-container">
-      <img className="img-container" src={profileImageUrl} alt="user" />
+    <div className={styles.cardContainer}>
+      <img className={styles.imgContainer} src={profileImageUrl} alt="user" />
       <h3>{name}</h3>
       <h6>Rating: {rating} ⭐</h6>
-      <p style={{ whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", width: "150px", marginBottom: "0.5rem" }}>{bio}</p>
-      <div className="prof-buttons">
-        {/* <button className="primary">Connect</button> */}
+      <p
+        style={{
+          whiteSpace: "nowrap",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+          width: "150px",
+          marginBottom: "0.5rem",
+        }}
+      >
+        {bio}
+      </p>
+      <div className={styles.profButtons}>
+        {/* <button className={styles.primary}>Connect</button> */}
         <Link to={`/profile/${username}`}>
-          <button className="primary ghost">View Profile</button>
+          <button className={`${styles.primary} ${styles.ghost}`}>View Profile</button>
         </Link>
       </div>
-      <div className="profskills">
+      <div className={styles.profskills}>
         <h6>Skills</h6>
-        <div className="profskill-boxes">
+        <div className={styles.profskillBoxes}>
           {skills.map((skill, index) => (
-            <div key={index} className="profskill-box">
-              <span className="skill">{skill}</span>
+            <div key={index} className={styles.profskillBox}>
+              <span className={styles.skill}>{skill}</span>
             </div>
           ))}
         </div>

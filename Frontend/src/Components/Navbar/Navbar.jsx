@@ -1,11 +1,13 @@
 import React, { useEffect } from "react";
+import styles from "./Navbar.module.css";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import { Link } from "react-router-dom";
-import Offcanvas from "react-bootstrap/Offcanvas";
-import { useUser } from "../../util/UserContext";
 import { Dropdown } from "react-bootstrap";
+import Offcanvas from "react-bootstrap/Offcanvas";
+
+import { Link } from "react-router-dom";
+import { useUser } from "../../util/UserContext";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -15,11 +17,10 @@ const UserProfileDropdown = () => {
   const navigate = useNavigate();
 
   const handleLogout = async () => {
-    // Perform logout logic
     localStorage.removeItem("userInfo");
     setUser(null);
     try {
-      const response = await axios.get("/auth/logout");
+      await axios.get("/auth/logout");
       window.location.href = "http://localhost:5173/login";
     } catch (error) {
       console.log(error);
@@ -48,7 +49,7 @@ const UserProfileDropdown = () => {
         }}
       >
         <img
-          src={user?.picture} // Replace with your image URL
+          src={user?.picture}
           alt="User Avatar"
           style={{ width: "100%", height: "100%", objectFit: "cover" }}
         />
@@ -75,7 +76,6 @@ const UserProfileDropdown = () => {
   return (
     <Dropdown>
       <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components" />
-
       <Dropdown.Menu as={CustomMenu}>
         <Dropdown.Item
           onClick={() => {
@@ -98,12 +98,10 @@ const Header = () => {
 
   useEffect(() => {
     setNavUser(JSON.parse(localStorage.getItem("userInfo")));
-    // console.log("navUser", navUser);
   }, [user]);
 
   useEffect(() => {
     const handleUrlChange = () => {
-      // Your logic to run when there is a change in the URL
       console.log("URL has changed:", window.location.href);
     };
     window.addEventListener("popstate", handleUrlChange);
@@ -122,9 +120,12 @@ const Header = () => {
 
   return (
     <>
-      <Navbar key="md" expand="md" className="bg-body-primary" style={{ backgroundColor: "#3BB4A1", zIndex: 998 }}>
+      <Navbar key="md" expand="md" style={{ boxShadow: "0 4px 8px var(--secondary-bg)", zIndex: 998 }}>
         <Container fluid>
-          <Navbar.Brand href="/" style={{ fontFamily: "Josefin Sans, sans-serif", color: "#2d2d2d", fontWeight: 500 }}>
+          <Navbar.Brand
+            href="/"
+            style={{ fontFamily: "Archivo Black, sans-serif", color: "var(--main)", fontWeight: 400 }}
+          >
             SKILL SWAP
           </Navbar.Brand>
           <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-md`} />
@@ -142,93 +143,104 @@ const Header = () => {
               </Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
-              <Nav className="justify-content-end flex-grow-1 pe-3">
-                <Nav.Link as={Link} to="/" style={{ fontFamily: "Montserrat, sans-serif", color: "#2d2d2d" }}>
-                  Home
-                </Nav.Link>
+              {/* START: Updated Section */}
+              <Nav className={`${styles.navContainer} justify-content-end flex-grow-1 pe-3 align-items-center`}>
+                {/* GROUP 1: Main links with underline effect */}
+                <div className={`${styles.NavLinks} d-flex`}>
+                  <Nav.Link as={Link} to="/">
+                    Home
+                  </Nav.Link>
+
+                  {navUser !== null ? (
+                    <>
+                      <Nav.Link as={Link} to="/discover">
+                        Discover
+                      </Nav.Link>
+                      <Nav.Link as={Link} to="/chats">
+                        Your Chats
+                      </Nav.Link>
+                    </>
+                  ) : (
+                    <>
+                      <Nav.Link as={Link} to="/about_us">
+                        About Us
+                      </Nav.Link>
+                      <Nav.Link as={Link} to="/#why-skill-swap">
+                        Why SkillSwap
+                      </Nav.Link>
+                    </>
+                  )}
+                </div>
+
+                {/* GROUP 2: User actions */}
                 {navUser !== null ? (
-                  <>
-                    <Nav.Link
-                      as={Link}
-                      to="/discover"
-                      style={{ fontFamily: "Montserrat, sans-serif", color: "#2d2d2d" }}
-                    >
-                      Discover
-                    </Nav.Link>
-                    <Nav.Link as={Link} to="/chats" style={{ fontFamily: "Montserrat, sans-serif", color: "#2d2d2d" }}>
-                      Your Chats
-                    </Nav.Link>
-                    {/* Paakhi discover page ke links yeha dalde please */}
-                    {discover && (
-                      <>
-                        <Nav.Link
-                          href="#for-you"
-                          style={{
-                            fontFamily: "Montserrat, sans-serif",
-                            color: "#f56664",
-                            fontSize: "1.2rem",
-                            marginTop: "2rem",
-                          }}
-                          className="d-md-none"
-                        >
-                          For You
-                        </Nav.Link>
-                        <Nav.Link
-                          href="#popular"
-                          style={{ fontFamily: "Montserrat, sans-serif", color: "#3bb4a1", fontSize: "1.2rem" }}
-                          className="d-md-none"
-                        >
-                          Popular
-                        </Nav.Link>
-                        <Nav.Link
-                          href="#web-development"
-                          style={{ fontFamily: "Montserrat, sans-serif", color: "#013e38", marginLeft: "1.5rem" }}
-                          className="d-md-none"
-                        >
-                          Web Development
-                        </Nav.Link>
-                        <Nav.Link
-                          href="#machine-learning"
-                          style={{ fontFamily: "Montserrat, sans-serif", color: "#013e38", marginLeft: "1.5rem" }}
-                          className="d-md-none"
-                        >
-                          Machine Learning
-                        </Nav.Link>
-                        <Nav.Link
-                          href="#others"
-                          style={{ fontFamily: "Montserrat, sans-serif", color: "#013e38", marginLeft: "1.5rem" }}
-                          className="d-md-none"
-                        >
-                          Others
-                        </Nav.Link>
-                      </>
-                    )}
-                    <Nav.Link as={Dropdown} style={{ fontFamily: "Montserrat, sans-serif", color: "#2d2d2d" }}>
-                      <UserProfileDropdown />
-                    </Nav.Link>
-                  </>
+                  <Nav.Link as={Dropdown} className="p-0">
+                    <UserProfileDropdown />
+                  </Nav.Link>
                 ) : (
+                  <Nav.Link
+                    as={Link}
+                    to="/login"
+                    className={styles.loginRegisterLink}
+                    style={{
+                      color: "var(--main)",
+                    }}
+                  >
+                    Login/Register
+                  </Nav.Link>
+                )}
+
+                {/* Mobile Offcanvas */}
+                {discover && navUser !== null && (
                   <>
                     <Nav.Link
-                      as={Link}
-                      to="/about_us"
-                      style={{ fontFamily: "Montserrat, sans-serif", color: "#2d2d2d" }}
+                      href="#for-you"
+                      style={{
+                        fontFamily: "Montserrat, sans-serif",
+                        color: "#f56664",
+                        fontSize: "1.2rem",
+                        marginTop: "2rem",
+                      }}
+                      className="d-md-none"
                     >
-                      About Us
+                      For You
                     </Nav.Link>
+
                     <Nav.Link
-                      as={Link}
-                      to="/#why-skill-swap"
-                      style={{ fontFamily: "Montserrat, sans-serif", color: "#2d2d2d" }}
+                      href="#popular"
+                      style={{ fontFamily: "Montserrat, sans-serif", color: "#3bb4a1", fontSize: "1.2rem" }}
+                      className="d-md-none"
                     >
-                      Why SkillSwap
+                      Popular
                     </Nav.Link>
-                    <Nav.Link as={Link} to="/login" style={{ fontFamily: "Montserrat, sans-serif", color: "#2d2d2d" }}>
-                      Login/Register
+
+                    <Nav.Link
+                      href="#web-development"
+                      style={{ fontFamily: "Montserrat, sans-serif", color: "#013e38", marginLeft: "1.5rem" }}
+                      className="d-md-none"
+                    >
+                      Web Development
+                    </Nav.Link>
+
+                    <Nav.Link
+                      href="#machine-learning"
+                      style={{ fontFamily: "Montserrat, sans-serif", color: "#013e38", marginLeft: "1.5rem" }}
+                      className="d-md-none"
+                    >
+                      Machine Learning
+                    </Nav.Link>
+
+                    <Nav.Link
+                      href="#others"
+                      style={{ fontFamily: "Montserrat, sans-serif", color: "#013e38", marginLeft: "1.5rem" }}
+                      className="d-md-none"
+                    >
+                      Others
                     </Nav.Link>
                   </>
                 )}
               </Nav>
+              {/* END: Updated Section */}
             </Offcanvas.Body>
           </Navbar.Offcanvas>
         </Container>

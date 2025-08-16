@@ -5,9 +5,9 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import Nav from "react-bootstrap/Nav";
 import ProfileCard from "./ProfileCard";
-import "./Discover.css";
 import Spinner from "react-bootstrap/Spinner";
 import { FaUser, FaFire, FaCode, FaBrain, FaEllipsisH } from "react-icons/fa";
+import styles from "./Discover.module.css";
 
 const Discover = () => {
   const navigate = useNavigate();
@@ -64,7 +64,8 @@ const Discover = () => {
   const renderProfiles = (users) => {
     if (users && users.length > 0) {
       return users.map((user) => (
-        <ProfileCard          key={user._id}
+        <ProfileCard
+          key={user._id}
           profileImageUrl={user?.picture}
           name={user?.name}
           rating={user?.rating ? user?.rating : 5}
@@ -74,32 +75,32 @@ const Discover = () => {
         />
       ));
     }
-    return <h1 className="no-users-message">No users to show</h1>;
+    return <h1 className={styles.noUsersMessage}>No users to show</h1>;
   };
 
   return (
-    <div className="discover-page">
-      <div className="content-container">
-        <div className="nav-bar">
+    <div className={styles.discoverPage}>
+      <div className={styles.contentContainer}>
+        <div className={styles.navBar}>
           <Nav defaultActiveKey="/home" className="flex-column">
-            <Nav.Link onClick={() => setActiveFilter("for-you")} className="nav-link">
-              <FaUser className="nav-icon" /> For You
+            <Nav.Link onClick={() => setActiveFilter("for-you")} className={styles.navLink}>
+              <FaUser className={styles.navIcon} /> For You
             </Nav.Link>
-            <Nav.Link onClick={() => setActiveFilter("popular")} className="nav-link">
-              <FaFire className="nav-icon" /> Popular
+            <Nav.Link onClick={() => setActiveFilter("popular")} className={styles.navLink}>
+              <FaFire className={styles.navIcon} /> Popular
             </Nav.Link>
-            <Nav.Link onClick={() => setActiveFilter("web-development")} className="nav-link">
-              <FaCode className="nav-icon" /> Web Development
+            <Nav.Link onClick={() => setActiveFilter("web-development")} className={styles.navLink}>
+              <FaCode className={styles.navIcon} /> Web Development
             </Nav.Link>
-            <Nav.Link onClick={() => setActiveFilter("machine-learning")} className="nav-link">
-              <FaBrain className="nav-icon" /> Machine Learning
+            <Nav.Link onClick={() => setActiveFilter("machine-learning")} className={styles.navLink}>
+              <FaBrain className={styles.navIcon} /> Machine Learning
             </Nav.Link>
-            <Nav.Link onClick={() => setActiveFilter("others")} className="nav-link">
-              <FaEllipsisH className="nav-icon" /> Others
+            <Nav.Link onClick={() => setActiveFilter("others")} className={styles.navLink}>
+              <FaEllipsisH className={styles.navIcon} /> Others
             </Nav.Link>
           </Nav>
         </div>
-        <div className="heading-container">
+        <div className={styles.headingContainer}>
           {loading ? (
             <div className="container d-flex justify-content-center align-items-center" style={{ height: "50vh" }}>
               <Spinner animation="border" variant="primary" />
@@ -108,32 +109,32 @@ const Discover = () => {
             <>
               {activeFilter === "for-you" && (
                 <section id="for-you">
-                  <h2 className="discover-heading">For You</h2>
-                  <div className="profile-cards">{renderProfiles(discoverUsers)}</div>
+                  <h2 className={styles.discoverHeading}>For You</h2>
+                  <div className={styles.profileCards}>{renderProfiles(discoverUsers)}</div>
                 </section>
               )}
               {activeFilter === "popular" && (
                 <section id="popular">
-                  <h2 className="discover-heading">Popular</h2>
-                  <div className="profile-cards">{renderProfiles(webDevUsers)}</div>
+                  <h2 className={styles.discoverHeading}>Popular</h2>
+                  <div className={styles.profileCards}>{renderProfiles(webDevUsers)}</div>
                 </section>
               )}
               {activeFilter === "web-development" && (
                 <section id="web-development">
-                  <h2 className="discover-heading">Web Development</h2>
-                  <div className="profile-cards">{renderProfiles(webDevUsers)}</div>
+                  <h2 className={styles.discoverHeading}>Web Development</h2>
+                  <div className={styles.profileCards}>{renderProfiles(webDevUsers)}</div>
                 </section>
               )}
               {activeFilter === "machine-learning" && (
                 <section id="machine-learning">
-                  <h2 className="discover-heading">Machine Learning</h2>
-                  <div className="profile-cards">{renderProfiles(mlUsers)}</div>
+                  <h2 className={styles.discoverHeading}>Machine Learning</h2>
+                  <div className={styles.profileCards}>{renderProfiles(mlUsers)}</div>
                 </section>
               )}
               {activeFilter === "others" && (
                 <section id="others">
-                  <h2 className="discover-heading">Others</h2>
-                  <div className="profile-cards">{renderProfiles(otherUsers)}</div>
+                  <h2 className={styles.discoverHeading}>Others</h2>
+                  <div className={styles.profileCards}>{renderProfiles(otherUsers)}</div>
                 </section>
               )}
             </>
