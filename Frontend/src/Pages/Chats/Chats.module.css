@@ -1,4 +1,4 @@
-.container-overall {
+.containerOverall {
   background-color: #2d2d2d;
   min-height: 90vh;
   font-family: Montserrat, sans-serif;
@@ -6,12 +6,12 @@
   border-right: 1px solid #3bb4a1;
 }
 
-.container-right {
+.containerRight {
   display: flex;
   background-color: lightgrey;
 }
 
-.container-left {
+.containerLeft {
   flex: 3;
   background-color: #2d2d2d;
   min-height: 90vh;
@@ -24,7 +24,7 @@
   border-bottom: 1px solid #3bb4a1;
 }
 
-.chat-list {
+.chatList {
   padding: 10px;
 }
 
@@ -50,7 +50,7 @@
   margin: 5rem;
 }
 
-.container-chat {
+.containerChat {
   min-width: 70vw;
 }
 
@@ -66,7 +66,7 @@
 }
 
 @media (max-width: 780px) {
-  .container-right {
+  .containerRight {
     display: flex;
     flex-direction: column;
   }

@@ -41,7 +41,7 @@ const imageContainerStyle = {
 
 const AboutUs = () => {
   return (
-    <div className={styles.content1-container}>
+    <div className={styles.content1Container}>
       <div style={contentContainerStyle}>
         <h2 style={titleStyle}>About Us</h2>
         <p style={descriptionStyle}>

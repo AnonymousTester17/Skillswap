@@ -1,4 +1,4 @@
-.content1-container {
+.content1Container {
   display: flex;
   flex-direction: row;
   align-items: start;
@@ -7,7 +7,7 @@
 }
 
 @media (max-width: 780px) {
-  .content1-container {
+  .content1Container {
     display: flex;
     flex-direction: column-reverse;
     justify-content: center;

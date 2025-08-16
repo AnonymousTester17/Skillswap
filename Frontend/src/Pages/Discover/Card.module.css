@@ -35,7 +35,7 @@ p {
   -webkit-box-orient: vertical;
 }
 
-.card-container {
+.cardContainer {
   display: flex;
   flex-direction: column;
   justify-content: flex-start; /* Align items to the top */
@@ -54,7 +54,7 @@ p {
   overflow: hidden;
 }
 
-.card-container img {
+.cardContainer img {
   border: 1px solid #fbf1a4;
   border-radius: 50%;
   padding: 4px;
@@ -63,7 +63,7 @@ p {
   margin-top: 0.5rem;
 }
 
-.prof-buttons {
+.profButtons {
   display: flex;
   justify-content: space-around;
   width: 100%;
@@ -111,13 +111,13 @@ button.primary.ghost:hover {
   z-index: 1;
 }
 
-.profskill-boxes {
+.profskillBoxes {
   margin-top: 0.2rem;
   display: flex;
   flex-wrap: wrap;
 }
 
-.profskill-box {
+.profskillBox {
   text-align: center;
   background-color: #809c5c;
   color: white;
@@ -130,7 +130,7 @@ button.primary.ghost:hover {
 }
 
 @media (max-width: 768px) {
-  .card-container {
+  .cardContainer {
     width: 40vw;
     height: auto;
   }

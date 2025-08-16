@@ -9,18 +9,18 @@
   --secfont: "Montserrat", sans-serif;
 }
 
-.discover-page {
+.discoverPage {
   background-color: var(--grey);
   min-height: 100vh;
   color: white;
 }
 
-.content-container {
+.contentContainer {
   display: flex;
   margin-left: 0; /* Adjust based on sidebar width */
 }
 
-.nav-bar {
+.navBar {
   background-color: #013e38;
   height: 100vh;
   width: 20vw;
@@ -34,7 +34,7 @@
   z-index: 1;
 }
 
-.nav-link {
+.navLink {
   font-family: var(--secfont);
   text-decoration: none;
   padding: 15px 20px;
@@ -47,30 +47,30 @@
   cursor: pointer;
 }
 
-.nav-link:hover {
+.navLink:hover {
   background-color: #ffffff27;
   color: var(--cyan);
 }
 
-.nav-icon {
+.navIcon {
   margin-right: 15px;
   font-size: 1.2rem;
 }
 
-.heading-container {
+.headingContainer {
   flex: 1;
   padding: 20px;
   max-width: 100%;
 }
 
-.profile-cards {
+.profileCards {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
   justify-content: flex-start; /* Changed to flex-start */
 }
 
-.discover-heading {
+.discoverHeading {
   font-family: "Josefin Sans", sans-serif;
   color: var(--yellow);
   margin-bottom: 1rem;
@@ -82,28 +82,28 @@
   font-size: 1.5rem;
 }
 
-h2.discover-heading {
+h2.discoverHeading {
   font-family: var(--secfont);
   font-size: 1.8rem; /* Slightly smaller for subheadings */
 }
 
 @media (max-width: 768px) {
-  .nav-bar {
+  .navBar {
     display: none;
   }
 
-  .content-container {
+  .contentContainer {
     margin-left: 0;
     flex-direction: column;
     align-items: center;
   }
 
-  .heading-container {
+  .headingContainer {
     width: 100%;
     padding: 10px;
   }
 
-  .profile-cards {
+  .profileCards {
     justify-content: center;
   }
 }
