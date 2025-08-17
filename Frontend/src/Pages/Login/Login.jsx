@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import { FaGoogle } from "react-icons/fa";
+import { GrSecure } from "react-icons/gr";
 
 const Login = () => {
   const [isHovered, setIsHovered] = useState(false); // State for hover effect
@@ -17,26 +18,27 @@ const Login = () => {
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#2d2d2d",
+    backgroundColor: "var(--primary-bg)",
   };
 
   const loginBoxStyle = {
     height: "200px",
     display: "flex",
-    backgroundColor: "#2d2d2d",
     flexDirection: "column",
-    justifyContent: "space-between",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: "20px",
     padding: "20px",
-    border: "1px solid #fcaaa8", // Border color
-    borderRadius: "10px",
-    boxShadow: "10px 10px 10px #5c4242",
+    border: "1px solid var(--main)", // Border color
+    borderRadius: "20px",
+    boxShadow: "10px 10px 10px var(--secondary-bg)",
     zIndex: "999",
   };
 
   const titleStyle = {
-    fontSize: "50px",
-    fontFamily: "Oswald, sans-serif", // Font family
-    color: "#fcaaa8", // Text color
+    fontSize: "2rem",
+    fontFamily: "Roboto, sans-serif", // Font family
+    color: "var(--main)", // Text color
     textAlign: "center",
   };
 
@@ -46,47 +48,39 @@ const Login = () => {
   };
 
   const buttonStyle = {
-    backgroundColor: "#f56664", // Button background color
-    color: "#fff", // Button text color
+    backgroundColor: "var(--main)", // Button background color
+    color: "var(--primary-bg)", // Button text color
     fontFamily: "Montserrat",
     border: "none",
     padding: "10px 20px",
     borderRadius: "5px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: "8px",
     cursor: "pointer",
   };
 
   const hoverButtonStyle = {
-    backgroundColor: "#fff", // Button background color on hover
-    color: "#f56664", // Button text color on hover
+    backgroundColor: "var(--hover-btn)", // Button background color on hover
+    color: "var(--primary-bg)", // Button text color
     fontFamily: "Montserrat",
     border: "none",
     padding: "10px 20px",
     borderRadius: "5px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: "8px",
     cursor: "pointer",
-    transition: "background-color 0.5s ease-in-out", // Transition effect
-  };
-
-  const imageStyle = {
-    position: "absolute",
-    left: "10px", // Position the above image to the left
-    top: "80px", // Add some space from the top
-    width: "400px",
-    marginBottom: "20px", // Add margin bottom to create space between image and login box
-  };
-
-  const imageBelowStyle = {
-    position: "absolute",
-    right: "10px", // Position the below image to the right
-    bottom: "50px", // Add some space from the bottom
-    width: "400px",
-    marginBottom: "20px", // Add margin bottom to create space between image and login box
+    transition: "background-color 0.3s ease-in-out", // Transition effect
   };
 
   return (
     <div style={containerStyle}>
-      <img src={"/assets/images/1.png"} alt="Above Image" style={imageStyle} />
       <div style={loginBoxStyle}>
         <h1 style={titleStyle}>LOGIN</h1>
+        <GrSecure size={50} style={{ color: "var(--dark-bg)"}}/>
         <div style={buttonContainerStyle}>
           <Button
             style={isHovered ? hoverButtonStyle : buttonStyle} // Apply style based on hover state
@@ -98,7 +92,6 @@ const Login = () => {
           </Button>
         </div>
       </div>
-      <img src={"/assets/images/2.png"} alt="Below Image" style={imageBelowStyle} />
     </div>
   );
 };

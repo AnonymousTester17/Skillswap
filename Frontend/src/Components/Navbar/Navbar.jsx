@@ -21,7 +21,7 @@ const UserProfileDropdown = () => {
     setUser(null);
     try {
       await axios.get("/auth/logout");
-      window.location.href = "http://localhost:5173/login";
+      window.location.href = "/";
     } catch (error) {
       console.log(error);
       if (error?.response?.data?.message) {

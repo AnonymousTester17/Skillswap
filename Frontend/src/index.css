@@ -25,6 +25,7 @@
   --secondary-text: oklch(27.8% 0.033 256.848);
   --teritary-text: oklch(55.1% 0.027 264.364);
   --dark-bg: oklch(55.5% 0.163 48.998);
+  --hover-btn: oklch(66.6% 0.179 58.318);
 }
 
 ::-webkit-scrollbar-track {
