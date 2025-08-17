@@ -10,25 +10,16 @@ const Login = () => {
     window.location.href = "http://localhost:8000/auth/google";
   };
 
-  const containerStyle = {
-    // height: "90.4vh",
-    minHeight: "90.4vh",
-    // height: "100%",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "var(--primary-bg)",
-  };
 
   const loginBoxStyle = {
     height: "200px",
+    width: "280px",
     display: "flex",
+    backgroundColor: "var(--primary-bg)",
     flexDirection: "column",
-    justifyContent: "center",
+    justifyContent: "space-between",
     alignItems: "center",
-    gap: "20px",
-    padding: "20px",
+    padding: "25px 20px",
     border: "1px solid var(--main)", // Border color
     borderRadius: "20px",
     boxShadow: "10px 10px 10px var(--secondary-bg)",
@@ -77,10 +68,9 @@ const Login = () => {
   };
 
   return (
-    <div style={containerStyle}>
       <div style={loginBoxStyle}>
         <h1 style={titleStyle}>LOGIN</h1>
-        <GrSecure size={50} style={{ color: "var(--dark-bg)"}}/>
+        <GrSecure size={30} style={{ color: "var(--dark-bg)"}}/>
         <div style={buttonContainerStyle}>
           <Button
             style={isHovered ? hoverButtonStyle : buttonStyle} // Apply style based on hover state
@@ -92,7 +82,6 @@ const Login = () => {
           </Button>
         </div>
       </div>
-    </div>
   );
 };
 
