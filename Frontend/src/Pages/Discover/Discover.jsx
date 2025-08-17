@@ -77,32 +77,47 @@ const Discover = () => {
     }
     return <h1 className={styles.noUsersMessage}>No users to show</h1>;
   };
-  
+
   return (
     <div className={styles.discoverPage}>
       <div className={styles.contentContainer}>
 
-        
+
         <div className={styles.navBar}>
-          <ul defaultActiveKey="/home" className="flex-column" style={{listStyleType: "none", paddingLeft: "0px"}}>
-            <li onClick={() => setActiveFilter("for-you")} className={styles.navLink}>
+          <ul defaultActiveKey="/home" className="flex-column" style={{ listStyleType: "none", paddingLeft: "0px" }}>
+            <li
+              onClick={() => setActiveFilter("for-you")}
+              className={`${styles.navLink} ${activeFilter === "for-you" ? styles.activeLink : ""}`}
+            >
               <FaUser className={styles.navIcon} /> For You
             </li>
-            <li onClick={() => setActiveFilter("popular")} className={styles.navLink}>
+            <li
+              onClick={() => setActiveFilter("popular")}
+              className={`${styles.navLink} ${activeFilter === "popular" ? styles.activeLink : ""}`}
+            >
               <FaFire className={styles.navIcon} /> Popular
             </li>
-            <li onClick={() => setActiveFilter("web-development")} className={styles.navLink}>
+            <li
+              onClick={() => setActiveFilter("web-development")}
+              className={`${styles.navLink} ${activeFilter === "web-development" ? styles.activeLink : ""}`}
+            >
               <FaCode className={styles.navIcon} /> Web Development
             </li>
-            <li onClick={() => setActiveFilter("machine-learning")} className={styles.navLink}>
+            <li
+              onClick={() => setActiveFilter("machine-learning")}
+              className={`${styles.navLink} ${activeFilter === "machine-learning" ? styles.activeLink : ""}`}
+            >
               <FaBrain className={styles.navIcon} /> Machine Learning
             </li>
-            <li onClick={() => setActiveFilter("others")} className={styles.navLink}>
+            <li
+              onClick={() => setActiveFilter("others")}
+              className={`${styles.navLink} ${activeFilter === "others" ? styles.activeLink : ""}`}
+            >
               <FaEllipsisH className={styles.navIcon} /> Others
             </li>
           </ul>
         </div>
-
+        
 
         <div className={styles.headingContainer}>
           {loading ? (
@@ -144,8 +159,6 @@ const Discover = () => {
             </>
           )}
         </div>
-
-
       </div>
     </div>
   );

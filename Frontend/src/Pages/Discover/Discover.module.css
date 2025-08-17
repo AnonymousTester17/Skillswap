@@ -11,22 +11,26 @@
 
 .discoverPage {
   background-color: var(--grey);
-  min-height: 100vh;
   color: white;
+  height: calc(100vh - 94px); /* Full viewport height minus navbar height */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Prevent the whole page from scrolling */
 }
 
 .contentContainer {
   display: flex;
-  margin-left: 0; /* Adjust based on sidebar width */
+  flex: 1; /* Take up all available vertical space */
+  min-height: 0; /* Fix for flexbox overflow */
 }
 
 .navBar {
   background-color: var(--primary-bg);
-  height: 100vh;
   width: 20vw;
   padding: 20px;
   z-index: 1;
   box-shadow: 2px 0 8px var(--secondary-bg);
+  /* Height is now controlled by the parent flex container */
 }
 
 .navLink {
@@ -42,7 +46,8 @@
   cursor: pointer;
 }
 
-.navLink:hover, .navLink:active {
+.navLink:hover,
+.activeLink {
   background-color: var(--secondary-bg);
   color: var(--primary-text);
 }
@@ -55,21 +60,21 @@
 .headingContainer {
   flex: 1;
   padding: 20px;
-  max-width: 100%;
+  overflow-y: auto; /* Allow this container to scroll if content overflows */
 }
 
 .profileCards {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  justify-content: flex-start; /* Changed to flex-start */
+  justify-content: flex-start;
 }
 
 .discoverHeading {
   font-family: "Josefin Sans", sans-serif;
   color: var(--yellow);
   margin-bottom: 1rem;
-  font-size: 2rem; /* Reduced font size */
+  font-size: 2rem;
 }
 
 .noUsersMessage {
@@ -79,10 +84,15 @@
 
 h2.discoverHeading {
   font-family: var(--secfont);
-  font-size: 1.8rem; /* Slightly smaller for subheadings */
+  font-size: 1.8rem;
 }
 
 @media (max-width: 768px) {
+  .discoverPage {
+    height: auto; /* Allow height to be determined by content on mobile */
+    min-height: calc(100vh - 94px);
+  }
+
   .navBar {
     display: none;
   }
@@ -96,6 +106,7 @@ h2.discoverHeading {
   .headingContainer {
     width: 100%;
     padding: 10px;
+    overflow-y: visible; /* Disable scrolling for the container on mobile */
   }
 
   .profileCards {
