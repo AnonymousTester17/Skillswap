@@ -1,9 +1,10 @@
+import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Footer from "./Components/Footer/Footer";
 import Discover from "./Pages/Discover/Discover";
-import Login from "./Pages/Login/Login";
 import Header from "./Components/Navbar/Navbar";
 import LandingPage from "./Pages/LandingPage/LandingPage";
+import AboutUs from "./Pages/AboutUs/AboutUs";
 import Chats from "./Pages/Chats/Chats";
 import Report from "./Pages/Report/Report";
 import Profile from "./Pages/Profile/Profile";
@@ -16,16 +17,17 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
+  const [showLogin, setShowLogin] = useState(false);
+
   return (
     <>
-      <Header />
+      <Header setShowLogin={setShowLogin} />
       <ToastContainer position="top-right" />
       <Routes>
         <Route element={<PrivateRoutes />}>
           <Route path="/chats" element={<Chats />} />
         </Route>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<LandingPage showLogin={showLogin} setShowLogin={setShowLogin} />} />
         <Route path="/discover" element={<Discover />} />
         <Route path="/register" element={<Register />} />
         <Route path="/edit_profile" element={<EditProfile />} />

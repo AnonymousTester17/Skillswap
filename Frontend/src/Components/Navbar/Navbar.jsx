@@ -5,7 +5,6 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Dropdown } from "react-bootstrap";
 import Offcanvas from "react-bootstrap/Offcanvas";
-
 import { Link } from "react-router-dom";
 import { useUser } from "../../util/UserContext";
 import { useState } from "react";
@@ -32,7 +31,6 @@ const UserProfileDropdown = () => {
 
   const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
     <div
-      href=""
       ref={ref}
       onClick={(e) => {
         onClick(e);
@@ -48,11 +46,7 @@ const UserProfileDropdown = () => {
           marginRight: "10px",
         }}
       >
-        <img
-          src={user?.picture}
-          alt="User Avatar"
-          style={{ width: "100%", height: "100%", objectFit: "cover" }}
-        />
+        <img src={user?.picture} alt="User Avatar" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
       </div>
       {children}
       &#x25bc;
@@ -77,21 +71,14 @@ const UserProfileDropdown = () => {
     <Dropdown>
       <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components" />
       <Dropdown.Menu as={CustomMenu}>
-        <Dropdown.Item
-          onClick={() => {
-            console.log(user.username);
-            navigate(`/profile/${user.username}`);
-          }}
-        >
-          Profile
-        </Dropdown.Item>
+        <Dropdown.Item onClick={() => navigate(`/profile/${user.username}`)}>Profile</Dropdown.Item>
         <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
   );
 };
 
-const Header = () => {
+const Header = ({ setShowLogin }) => {
   const [navUser, setNavUser] = useState(null);
   const { user } = useUser();
   const [discover, setDiscover] = useState(false);
@@ -101,11 +88,8 @@ const Header = () => {
   }, [user]);
 
   useEffect(() => {
-    const handleUrlChange = () => {
-      console.log("URL has changed:", window.location.href);
-    };
+    const handleUrlChange = () => {};
     window.addEventListener("popstate", handleUrlChange);
-
     const temp = window.location.href.split("/");
     const url = temp.pop();
     if (url.startsWith("discover")) {
@@ -116,16 +100,13 @@ const Header = () => {
     return () => {
       window.removeEventListener("popstate", handleUrlChange);
     };
-  }, [window.location.href]);
+  }, []);
 
   return (
     <>
-      <Navbar key="md" expand="md" style={{ boxShadow: "0 4px 8px var(--secondary-bg)", zIndex: 998, padding: "20px 25px"}}>
+      <Navbar key="md" expand="md" style={{ boxShadow: "0 4px 8px var(--secondary-bg)", zIndex: 998, padding: "20px 25px" }}>
         <Container fluid>
-          <Navbar.Brand
-            href="/"
-            style={{ fontFamily: "Archivo Black, sans-serif", color: "var(--main)", fontWeight: 400 }}
-          >
+          <Navbar.Brand href="/" style={{ fontFamily: "Archivo Black, sans-serif", color: "var(--main)", fontWeight: 400 }}>
             SKILL SWAP
           </Navbar.Brand>
           <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-md`} />
@@ -135,52 +116,43 @@ const Header = () => {
             placement="end"
           >
             <Offcanvas.Header closeButton>
-              <Offcanvas.Title
-                id={`offcanvasNavbarLabel-expand-md`}
-                style={{ fontFamily: "Josefin Sans, sans-serif", color: "#028477" }}
-              >
+              <Offcanvas.Title id={`offcanvasNavbarLabel-expand-md`} style={{ fontFamily: "Josefin Sans, sans-serif", color: "#028477" }}>
                 SKILL SWAP
               </Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
-              {/* START: Updated Section */}
               <Nav className={`${styles.navContainer} justify-content-end flex-grow-1 pe-3 align-items-center`}>
-                {/* GROUP 1: Main links with underline effect */}
                 <div className={`${styles.navLinks} d-flex`}>
-                  <Nav.Link as={Link} to="/">
+                  <Nav.Link as={Link} to="/" className={styles.navLink}>
                     Home
                   </Nav.Link>
-
                   {navUser !== null ? (
                     <>
-                      <Nav.Link as={Link} to="/discover">
+                      <Nav.Link as={Link} to="/discover" className={styles.navLink}>
                         Discover
                       </Nav.Link>
-                      <Nav.Link as={Link} to="/chats">
+                      <Nav.Link as={Link} to="/chats" className={styles.navLink}>
                         Your Chats
                       </Nav.Link>
                     </>
                   ) : (
                     <>
-                      <Nav.Link as={Link} to="/#why-skill-swap">
+                      <Nav.Link as={Link} to="/#why-skill-swap" className={styles.navLink}>
                         Why SkillSwap
                       </Nav.Link>
-                      <Nav.Link as={Link} to="/#about-us">
+                      <Nav.Link as={Link} to="/#about-us" className={styles.navLink}>
                         About Us
                       </Nav.Link>
                     </>
                   )}
                 </div>
-
-                {/* GROUP 2: User actions */}
                 {navUser !== null ? (
                   <Nav.Link as={Dropdown} className="p-0">
                     <UserProfileDropdown />
                   </Nav.Link>
                 ) : (
                   <Nav.Link
-                    as={Link}
-                    to="/login"
+                    onClick={() => setShowLogin(true)}
                     className={styles.loginRegisterLink}
                     style={{
                       backgroundColor: "var(--main)",
@@ -188,63 +160,13 @@ const Header = () => {
                       padding: "10px 20px",
                       fontWeight: "bold",
                       color: "var(--primary-bg)",
+                      cursor: "pointer",
                     }}
                   >
                     Login/Register
                   </Nav.Link>
                 )}
-
-                {/* Mobile Offcanvas */}
-                {discover && navUser !== null && (
-                  <>
-                    <Nav.Link
-                      href="#for-you"
-                      style={{
-                        fontFamily: "Montserrat, sans-serif",
-                        color: "#f56664",
-                        fontSize: "1.2rem",
-                        marginTop: "2rem",
-                      }}
-                      className="d-md-none"
-                    >
-                      For You
-                    </Nav.Link>
-
-                    <Nav.Link
-                      href="#popular"
-                      style={{ fontFamily: "Montserrat, sans-serif", color: "#3bb4a1", fontSize: "1.2rem" }}
-                      className="d-md-none"
-                    >
-                      Popular
-                    </Nav.Link>
-
-                    <Nav.Link
-                      href="#web-development"
-                      style={{ fontFamily: "Montserrat, sans-serif", color: "#013e38", marginLeft: "1.5rem" }}
-                      className="d-md-none"
-                    >
-                      Web Development
-                    </Nav.Link>
-
-                    <Nav.Link
-                      href="#machine-learning"
-                      style={{ fontFamily: "Montserrat, sans-serif", color: "#013e38", marginLeft: "1.5rem" }}
-                      className="d-md-none"
-                    >
-                      Machine Learning
-                    </Nav.Link>
-
-                    <Nav.Link
-                      href="#others"
-                      style={{ fontFamily: "Montserrat, sans-serif", color: "#013e38", marginLeft: "1.5rem" }}
-                      className="d-md-none"
-                    >
-                      Others
-                    </Nav.Link>
-                  </>
-                )}
               </Nav>
-              {/* END: Updated Section */}
             </Offcanvas.Body>
           </Navbar.Offcanvas>
         </Container>
