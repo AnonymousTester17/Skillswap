@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 import styles from "./LandingPage.module.css";
 import AboutUs from "../AboutUs/AboutUs";
 import LoginModal from "../Login/LoginModal";
+import Footer from "../../Components/Footer/Footer"; // Import Footer
 
 const LandingPage = ({ showLogin, setShowLogin }) => {
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -140,7 +141,7 @@ const LandingPage = ({ showLogin, setShowLogin }) => {
         </div>
 
         <h2 id="why-skill-swap" style={contentTitleStyle}>WHY SKILL SWAP?</h2>
-        <div style={textContainer}>
+        <div  style={textContainer}>
           <div style={descriptionStyle}>
             <br />
             <br />
@@ -201,6 +202,7 @@ const LandingPage = ({ showLogin, setShowLogin }) => {
         </div>
         <AboutUs />
       </div>
+      <Footer />
     </>
   );
 };

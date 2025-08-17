@@ -21,25 +21,20 @@
 }
 
 .navBar {
-  background-color: #013e38;
+  background-color: var(--primary-bg);
   height: 100vh;
   width: 20vw;
   padding: 20px;
-  position: relative;
-  left: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
   z-index: 1;
+  box-shadow: 2px 0 8px var(--secondary-bg);
 }
 
 .navLink {
   font-family: var(--secfont);
   text-decoration: none;
-  padding: 15px 20px;
+  padding: 15px 0px 15px 15px;
   margin: 10px 0;
-  color: white;
+  color: var(--teritary-text);
   display: flex;
   align-items: center;
   border-radius: 10px;
@@ -47,9 +42,9 @@
   cursor: pointer;
 }
 
-.navLink:hover {
-  background-color: #ffffff27;
-  color: var(--cyan);
+.navLink:hover, .navLink:active {
+  background-color: var(--secondary-bg);
+  color: var(--primary-text);
 }
 
 .navIcon {

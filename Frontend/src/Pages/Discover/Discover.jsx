@@ -81,25 +81,29 @@ const Discover = () => {
   return (
     <div className={styles.discoverPage}>
       <div className={styles.contentContainer}>
+
+        
         <div className={styles.navBar}>
-          <Nav defaultActiveKey="/home" className="flex-column">
-            <Nav.Link onClick={() => setActiveFilter("for-you")} className={styles.navLink}>
+          <ul defaultActiveKey="/home" className="flex-column" style={{listStyleType: "none", paddingLeft: "0px"}}>
+            <li onClick={() => setActiveFilter("for-you")} className={styles.navLink}>
               <FaUser className={styles.navIcon} /> For You
-            </Nav.Link>
-            <Nav.Link onClick={() => setActiveFilter("popular")} className={styles.navLink}>
+            </li>
+            <li onClick={() => setActiveFilter("popular")} className={styles.navLink}>
               <FaFire className={styles.navIcon} /> Popular
-            </Nav.Link>
-            <Nav.Link onClick={() => setActiveFilter("web-development")} className={styles.navLink}>
+            </li>
+            <li onClick={() => setActiveFilter("web-development")} className={styles.navLink}>
               <FaCode className={styles.navIcon} /> Web Development
-            </Nav.Link>
-            <Nav.Link onClick={() => setActiveFilter("machine-learning")} className={styles.navLink}>
+            </li>
+            <li onClick={() => setActiveFilter("machine-learning")} className={styles.navLink}>
               <FaBrain className={styles.navIcon} /> Machine Learning
-            </Nav.Link>
-            <Nav.Link onClick={() => setActiveFilter("others")} className={styles.navLink}>
+            </li>
+            <li onClick={() => setActiveFilter("others")} className={styles.navLink}>
               <FaEllipsisH className={styles.navIcon} /> Others
-            </Nav.Link>
-          </Nav>
+            </li>
+          </ul>
         </div>
+
+
         <div className={styles.headingContainer}>
           {loading ? (
             <div className="container d-flex justify-content-center align-items-center" style={{ height: "50vh" }}>
@@ -140,6 +144,8 @@ const Discover = () => {
             </>
           )}
         </div>
+
+
       </div>
     </div>
   );

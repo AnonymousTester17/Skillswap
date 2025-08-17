@@ -4,7 +4,6 @@ import Footer from "./Components/Footer/Footer";
 import Discover from "./Pages/Discover/Discover";
 import Header from "./Components/Navbar/Navbar";
 import LandingPage from "./Pages/LandingPage/LandingPage";
-import AboutUs from "./Pages/AboutUs/AboutUs";
 import Chats from "./Pages/Chats/Chats";
 import Report from "./Pages/Report/Report";
 import Profile from "./Pages/Profile/Profile";
@@ -36,8 +35,6 @@ const App = () => {
         <Route path="/rating/:username" element={<Rating />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-
-      <Footer />
     </>
   );
 };
