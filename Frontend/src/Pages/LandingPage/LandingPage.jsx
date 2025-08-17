@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from "react";
+import AboutUs from '../AboutUs/AboutUs';
 import styled, { keyframes } from "styled-components";
+import { useLocation } from "react-router-dom";
 import styles from "./LandingPage.module.css";
+
 const LandingPage = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,6 +19,16 @@ const LandingPage = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  // This new useEffect handles scrolling to the section based on the URL hash
+  useEffect(() => {
+    if (location.hash) {
+      const element = document.getElementById(location.hash.substring(1));
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+  }, [location]);
 
   const containerStyle = {
     padding: "0 50px",
@@ -113,13 +127,6 @@ const LandingPage = () => {
     50% { border-color: #3BB4A1; }
   `;
 
-  // const AnimatedTitle = styled.h1`
-  //   font-family: "Josefin Sans", sans-serif;
-  //   font-weight: 700;
-  //   font-size: 5.5rem;
-  //   text-align: center;
-  //   animation: ${fadeIn} 1.5s ease-out, ${colorChange} 4s infinite;
-  // `;
   const AnimatedTitle = styled.h1`
     font-family: "Josefin Sans", sans-serif;
     font-weight: 700;
@@ -145,7 +152,7 @@ const LandingPage = () => {
             alt="ml"
             width="270px"
             height="270px"
-            style={{ position: "absolute", left: 0 }}
+            style={{ position: "absolute", left: 0, filter: "drop-shadow(4px 6px 8px var(--dark-bg)"}}
           />
           <img src={"/assets/images/1.png"} alt="Above Image" style={imageStyle} />
 
@@ -159,13 +166,14 @@ const LandingPage = () => {
             alt="web"
             width="250px"
             height="350px"
-            style={{ position: "absolute", right: 0, bottom: "-150px" }}
+            style={{ position: "absolute", right: 0, bottom: "-150px", filter: "drop-shadow(4px 6px 8px var(--dark-bg)"}}
           />
         </div>
       </div>
 
-      <h2 style={contentTitleStyle}>WHY SKILL SWAP?</h2>
-      <div id="why-skill-swap" style={textContainer}>
+      <section>
+      <h2 id="why-skill-swap" style={contentTitleStyle}>WHY SKILL SWAP?</h2>
+      <div style={textContainer}>
         <div style={descriptionStyle}>
           <br />
           <br />
@@ -238,7 +246,12 @@ const LandingPage = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div>    
+      </section>
+
+      
+      <AboutUs />
+      
     </div>
   );
 };

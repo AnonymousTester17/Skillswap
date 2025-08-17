@@ -1,71 +1,68 @@
 import React from "react";
 import styles from "./AboutUs.module.css";
 
-const containerStyle = {
-  display: "flex",
-  flexDirection: "row",
-  alignItems: "start",
-  backgroundColor: "#2D2D2D",
-  justifyContent: "center",
-};
-
 const contentContainerStyle = {
   maxWidth: "50vw",
-  margin: "60px",
-  justifyContent: "center",
 };
 
 const titleStyle = {
-  fontFamily: "Oswald, sans-serif",
-  color: "#FBF1A4",
+  fontFamily: "Roboto",
+  color: "var(--main)",
   fontSize: "3rem",
-  fontWeight: "bold",
+  fontWeight: 400,
   marginBottom: "20px",
-  textAlign: "left",
+  textAlign: "center",
 };
 
 const descriptionStyle = {
   fontFamily: "Montserrat, sans-serif",
-  color: "#f2efdb",
+  color: "var(--teritary-text)",
   fontSize: "1rem",
   lineHeight: "1.6",
-  textAlign: "left",
-  maxHeight: "100vh",
 };
 
 const imageContainerStyle = {
+  width: "45%",
+  height: "auto",
   display: "flex",
+  alignItems: "center",
   justifyContent: "center",
   marginTop: "50px",
+  borderRadius: "20px",
 };
 
 const AboutUs = () => {
   return (
-    <div className={styles.content1Container}>
-      <div style={contentContainerStyle}>
-        <h2 style={titleStyle}>About Us</h2>
-        <p style={descriptionStyle}>
-          <i>
-            As students, we have looked for upskilling everywhere. Mostly, we end up paying big amounts to gain
-            certifications and learn relevant skills. We thought of SkillSwap to resolve that. Learning new skills and
-            gaining more knowledge all while networking with talented people!
-          </i>
-        </p>
-        <p style={descriptionStyle}>
-          <br />
-          At SkillSwap, we believe in the power of learning and sharing knowledge. Our platform connects individuals
-          from diverse backgrounds to exchange practical skills and expertise. Whether you're a seasoned professional
-          looking to mentor others or a beginner eager to learn, SkillSwap provides a supportive environment for growth
-          and collaboration.
-          <br />
-          <br />
-          Our mission is to empower individuals to unlock their full potential through skill sharing. By facilitating
-          meaningful interactions and fostering a culture of lifelong learning, we aim to create a community where
-          everyone has the opportunity to thrive.
-        </p>
+    <section
+      style={{
+        backgroundColor: "var(--secondary-bg)",
+        width: "100%",
+        padding: "50px",
+        borderRadius: "20px",
+        marginBottom: "100px",
+      }}
+    >
+      <h2 id="#about-us" style={titleStyle}>About Us</h2>
+      <div className={styles.content1Container}>
+        <div style={contentContainerStyle}>
+          <p style={descriptionStyle}>
+            &#8680; As students, we often spend heavily on certifications to upskill. SkillSwap solves this by enabling
+            learning, knowledge-sharing, and networking with talented peers.
+          </p>
+          <p style={descriptionStyle}>
+            <br />
+            &#8680; At SkillSwap, we believe in the power of learning and sharing knowledge. Our platform connects people from
+            diverse backgrounds to exchange practical skills. Whether you’re mentoring or learning, SkillSwap offers a
+            supportive space for growth and collaboration.
+            <br />
+            <br />
+            &#8680; Our mission is to empower individuals to unlock their potential through skill sharing. We foster lifelong
+            learning and meaningful connections, building a community where everyone can thrive.
+          </p>
+        </div>
+        <img src={"/assets/images/about.svg"} style={imageContainerStyle} />
       </div>
-      <img src={"/assets/images/about us.png"} style={{ maxWidth: "50vw", maxHeight: "100vh" }} />
-    </div>
+    </section>
   );
 };
 

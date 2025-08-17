@@ -165,7 +165,7 @@ const Header = () => {
                       <Nav.Link as={Link} to="/#why-skill-swap">
                         Why SkillSwap
                       </Nav.Link>
-                      <Nav.Link as={Link} to="/about_us">
+                      <Nav.Link as={Link} to="/#about-us">
                         About Us
                       </Nav.Link>
                     </>
