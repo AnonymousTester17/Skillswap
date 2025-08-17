@@ -42,7 +42,7 @@ const AboutUs = () => {
         marginBottom: "100px",
       }}
     >
-      <h2 id="#about-us" style={titleStyle}>About Us</h2>
+      <h2 id="about-us" style={titleStyle}>About Us</h2>
       <div className={styles.content1Container}>
         <div style={contentContainerStyle}>
           <p style={descriptionStyle}>

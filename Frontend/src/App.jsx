@@ -4,7 +4,6 @@ import Discover from "./Pages/Discover/Discover";
 import Login from "./Pages/Login/Login";
 import Header from "./Components/Navbar/Navbar";
 import LandingPage from "./Pages/LandingPage/LandingPage";
-import AboutUs from "./Pages/AboutUs/AboutUs";
 import Chats from "./Pages/Chats/Chats";
 import Report from "./Pages/Report/Report";
 import Profile from "./Pages/Profile/Profile";
