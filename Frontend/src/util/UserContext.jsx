@@ -1,40 +1,37 @@
 import React, { useState, useEffect, createContext, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const UserContext = createContext();
 
 const UserContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-
   const navigate = useNavigate();
+  const location = useLocation(); // Use the useLocation hook
 
   useEffect(() => {
-    const handleUrlChange = () => {
-      // Your logic to run when there is a change in the URL
-      console.log("URL has changed:", window.location.href);
-    };
-    window.addEventListener("popstate", handleUrlChange);
     const userInfoString = localStorage.getItem("userInfo");
+
     if (userInfoString) {
       try {
         const userInfo = JSON.parse(userInfoString);
         setUser(userInfo);
       } catch (error) {
         console.error("Error parsing userInfo:", error);
+        localStorage.removeItem("userInfo"); // Clear corrupted data
       }
     } else {
-      const temp = window.location.href.split("/");
-      const url = temp.pop();
-      console.log("url", url);
-      if (url !== "about_us" && url !== "#why-skill-swap" && url !== "" && url !== "discover" && url !== "register") {
+      // This is the new, more robust logic for handling public routes
+      const publicPaths = ["/", "/login", "/register", "/discover"];
+      const currentPath = location.pathname;
+
+      // If the current path is NOT a public one, redirect to login.
+      // This correctly allows access to the landing page ("/") and all its hash links.
+      if (!publicPaths.includes(currentPath)) {
         navigate("/login");
       }
     }
-    return () => {
-      window.removeEventListener("popstate", handleUrlChange);
-    };
-  }, [window.location.href]);
+  }, [location, navigate]); // Depend on location and navigate
 
   return <UserContext.Provider value={{ user, setUser }}>{children}</UserContext.Provider>;
 };
