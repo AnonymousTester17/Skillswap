@@ -70,7 +70,7 @@ const UserProfileDropdown = () => {
   return (
     <Dropdown>
       <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components" />
-      <Dropdown.Menu as={CustomMenu}>
+      <Dropdown.Menu as={CustomMenu} className={styles.userDropdownMenu}>
         <Dropdown.Item onClick={() => navigate(`/profile/${user.username}`)}>Profile</Dropdown.Item>
         <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
       </Dropdown.Menu>

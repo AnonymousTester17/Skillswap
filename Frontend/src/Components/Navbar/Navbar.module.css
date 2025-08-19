@@ -48,3 +48,11 @@
 .loginRegisterLink:hover {
   transform: scale(1.1);
 }
+
+.userDropdownMenu {
+  left: auto !important;
+  right: 0 !important;
+  margin-top: 10px !important;
+  box-shadow: 0 4px 8px var(--secondary-bg);
+  border: 2px solid var(--secondary-bg);
+}
