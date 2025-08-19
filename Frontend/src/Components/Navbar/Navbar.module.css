@@ -56,3 +56,9 @@
   box-shadow: 0 4px 8px var(--secondary-bg);
   border: 2px solid var(--secondary-bg);
 }
+
+.userDropdownMenu :global(.dropdown-item:hover),
+.userDropdownMenu :global(.dropdown-item:active) {
+  background-color: var(--secondary-bg);
+  color: var(--secondary-text);
+}
