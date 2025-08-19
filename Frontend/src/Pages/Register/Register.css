@@ -1,4 +1,4 @@
-.register_page {
+.register_page1 {
   min-height: 80vh;
   background-color: #013e38;
   font-family: Montserrat;
@@ -9,7 +9,7 @@
   align-items: center;
 }
 
-.register_section {
+.register_section1 {
   background-color: #f2f2f2;
   color: #2d2d2d;
   min-height: 80vh;
@@ -19,7 +19,7 @@
   border-radius: 10px;
 }
 
-.previewForm{
+.previewForm1 {
   display: flex;
   flex-direction: column;
   width: 100vw;
@@ -28,10 +28,10 @@
 
 /* write media query for max-width medium screen */
 @media (max-width: 768px) {
-  .register_section {
+  .register_section1 {
     width: 95%;
   }
-  .link {
+  .link1 {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -39,26 +39,26 @@
   }
 }
 
-.previewContainer {
+.previewContainer1 {
   font-family: "Montserrat", sans-serif;
   color: #2d2d2d;
   margin-bottom: 20px;
 }
 
-.previewItem {
+.previewItem1 {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
 }
 
-.previewLabel {
+.previewLabel1 {
   flex: 1;
   font-weight: bold;
   color: #3bb4a1;
 }
 
-.previewValue {
+.previewValue1{
   flex: 2;
   margin-left: 20px;
 }

@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import Spinner from "react-bootstrap/Spinner";
 import { Link } from "react-router-dom";
+import { FiEdit } from "react-icons/fi";
 
 const Profile = () => {
   const { user, setUser } = useUser();
@@ -82,10 +83,11 @@ const Profile = () => {
 
   return (
     <div className={styles["profile-container"]}>
-      <div className="container" style={{ minHeight: "86vh" }}>
+      <h2 className={styles["profile-heading"]}>My Profile</h2>
+      <div className={styles["container"]} style={{ minHeight: "86vh" }}>
         {loading ? (
           <div className="row d-flex justify-content-center align-items-center" style={{ height: "50vh" }}>
-            <Spinner animation="border" variant="primary" />
+            <Spinner animation="border" style={{ color: "var(--main)" }} />
           </div>
         ) : (
           <>
@@ -97,9 +99,7 @@ const Profile = () => {
                 </div>
                 {/* Name */}
                 <div className={styles["misc"]}>
-                  <h1 className={styles["profile-name"]} style={{ marginLeft: "2rem" }}>
-                    {profileUser?.name}
-                  </h1>
+                  <h1 className={styles["profile-name"]}>{profileUser?.name}</h1>
                   {/* Rating */}
                   <div className={styles["rating"]} style={{ marginLeft: "2rem" }}>
                     {/* Rating stars */}
@@ -109,12 +109,12 @@ const Profile = () => {
                         : "⭐⭐⭐⭐⭐"}
                     </span>
                     {/* Rating out of 5 */}
-                    <span className={styles["rating-value"]}>{profileUser?.rating ? profileUser?.rating : "5"}</span>
+                    {/* <span className={styles["rating-value"]}>{profileUser?.rating ? profileUser?.rating : "5"}</span> */}
                   </div>
                   {/* Connect and Report Buttons */}
                   {
                     // If the user is the same as the logged in user, don't show the connect and report buttons
-                    user?.username !== username && (
+                    user?.username !== username ? (
                       <div className={styles["buttons"]}>
                         <button
                           className={styles["connect-button"]}
@@ -122,60 +122,99 @@ const Profile = () => {
                         >
                           {connectLoading ? (
                             <>
-                              <Spinner animation="border" variant="light" size="sm" style={{ marginRight: "0.5rem" }} />
+                              <Spinner
+                                animation="border"
+                                size="sm"
+                                style={{ color: "var(--main)", marginRight: "0.5rem" }}
+                              />
                             </>
                           ) : (
                             profileUser?.status
                           )}
                         </button>
-                        <Link to={`/report/${profileUser.username}`}>
-                          <button className={styles["report-button"]}>Report</button>
-                        </Link>
+
                         <Link to={`/rating/${profileUser.username}`}>
                           <button className={`${styles["report-button"]} bg-success`}>Rate</button>
                         </Link>
+                        <Link to={`/report/${profileUser.username}`}>
+                          <button className={styles["report-button"]}>Report</button>
+                        </Link>
+                      </div>
+                    ) : (
+                      <div className={styles["edit-links"]}>
+                        {/* Portfolio Links */}
+                        <div className={styles["portfolio-links"]}>
+                          <a
+                            href={profileUser?.githubLink ? profileUser.githubLink : "#"}
+                            target={profileUser?.githubLink ? "_blank" : "_self"}
+                            className={styles["portfolio-link"]}
+                          >
+                            <img src="/assets/images/github.png" className={styles["link"]} alt="Github" />
+                          </a>
+                          <a
+                            href={profileUser?.linkedinLink ? profileUser.linkedinLink : "#"}
+                            target={profileUser?.linkedinLink ? "_blank" : "_self"}
+                            className={styles["portfolio-link"]}
+                          >
+                            <img src="/assets/images/linkedin.png" className={styles["link"]} alt="LinkedIn" />
+                          </a>
+                          <a
+                            href={profileUser?.portfolioLink ? profileUser.portfolioLink : "#"}
+                            target={profileUser?.portfolioLink ? "_blank" : "_self"}
+                            className={styles["portfolio-link"]}
+                          >
+                            <img src="/assets/images/link.png" className={styles["link"]} alt="Portfolio" />
+                          </a>
+                        </div>
+
+                        {user.username === username && (
+                          <Link style={{ textDecoration: "none" }} to="/edit_profile">
+                            <button className={styles["edit-button"]}>
+                              Edit Profile <FiEdit />
+                            </button>
+                          </Link>
+                        )}
                       </div>
                     )
                   }
                 </div>
               </div>
-              <div className={styles["edit-links"]}>
-                {user.username === username && (
-                  <Link to="/edit_profile">
-                    <button className={styles["edit-button"]}>Edit Profile ✎</button>
-                  </Link>
-                )}
 
-                {/* Portfolio Links */}
-                <div className={styles["portfolio-links"]}>
-                  <a
-                    href={profileUser?.githubLink ? profileUser.githubLink : "#"}
-                    target={profileUser?.githubLink ? "_blank" : "_self"}
-                    className={styles["portfolio-link"]}
-                  >
-                    <img src="/assets/images/github.png" className={styles["link"]} alt="Github" />
-                  </a>
-                  <a
-                    href={profileUser?.linkedinLink ? profileUser.linkedinLink : "#"}
-                    target={profileUser?.linkedinLink ? "_blank" : "_self"}
-                    className={styles["portfolio-link"]}
-                  >
-                    <img src="/assets/images/linkedin.png" className={styles["link"]} alt="LinkedIn" />
-                  </a>
-                  <a
-                    href={profileUser?.portfolioLink ? profileUser.portfolioLink : "#"}
-                    target={profileUser?.portfolioLink ? "_blank" : "_self"}
-                    className={styles["portfolio-link"]}
-                  >
-                    <img src="/assets/images/link.png" className={styles["link"]} alt="Portfolio" />
-                  </a>
+              {user?.username !== username && (
+                <div className={styles["edit-links"]}>
+                  {/* Portfolio Links */}
+                  <div className={styles["portfolio-links"]}>
+                    <a
+                      href={profileUser?.githubLink ? profileUser.githubLink : "#"}
+                      target={profileUser?.githubLink ? "_blank" : "_self"}
+                      className={styles["portfolio-link"]}
+                    >
+                      <img src="/assets/images/github.png" className={styles["link"]} alt="Github" />
+                    </a>
+                    <a
+                      href={profileUser?.linkedinLink ? profileUser.linkedinLink : "#"}
+                      target={profileUser?.linkedinLink ? "_blank" : "_self"}
+                      className={styles["portfolio-link"]}
+                    >
+                      <img src="/assets/images/linkedin.png" className={styles["link"]} alt="LinkedIn" />
+                    </a>
+                    <a
+                      href={profileUser?.portfolioLink ? profileUser.portfolioLink : "#"}
+                      target={profileUser?.portfolioLink ? "_blank" : "_self"}
+                      className={styles["portfolio-link"]}
+                    >
+                      <img src="/assets/images/link.png" className={styles["link"]} alt="Portfolio" />
+                    </a>
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
 
             {/* Bio */}
-            <h2>Bio</h2>
-            <p className={styles["bio"]}>{profileUser?.bio}</p>
+            <div className={styles["bio-box"]}>
+              <h2>Bio</h2>
+              <div className={styles["bio"]}>{profileUser?.bio}</div>
+            </div>
 
             {/* Skills */}
             <div className={styles["skills"]}>
@@ -183,7 +222,7 @@ const Profile = () => {
               {/* Render skill boxes here */}
               <div className={styles["skill-boxes"]}>
                 {profileUser?.skillsProficientAt.map((skill, index) => (
-                  <div className={styles["skill-box"]} style={{ fontSize: "16px" }} key={index}>
+                  <div className={styles["skill-box"]} key={index}>
                     {skill}
                   </div>
                 ))}

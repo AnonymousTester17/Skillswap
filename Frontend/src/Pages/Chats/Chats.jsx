@@ -1,17 +1,20 @@
-import React, { useEffect, useState } from "react";
-import Button from "react-bootstrap/Button";
-import ListGroup from "react-bootstrap/ListGroup";
-import Form from "react-bootstrap/Form";
-import axios from "axios";
-import { toast } from "react-toastify";
 import { useUser } from "../../util/UserContext";
-import Spinner from "react-bootstrap/Spinner";
-import { Link, useNavigate } from "react-router-dom";
-import io from "socket.io-client";
-import ScrollableFeed from "react-scrollable-feed";
 import RequestCard from "./RequestCard";
 import styles from "./Chats.module.css";
+
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
+import io from "socket.io-client";
+
+import Button from "react-bootstrap/Button";
+import ListGroup from "react-bootstrap/ListGroup";
+import Spinner from "react-bootstrap/Spinner";
+import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
+
+import { toast } from "react-toastify";
+import ScrollableFeed from "react-scrollable-feed";
 
 var socket;
 const Chats = () => {
@@ -75,7 +78,6 @@ const Chats = () => {
       const tempUser = JSON.parse(localStorage.getItem("userInfo"));
       const { data } = await axios.get("http://localhost:8000/chat");
       // console.log("Chats", data.data);
-      toast.success(data.message);
       if (tempUser?._id) {
         const temp = data.data.map((chat) => {
           return {
@@ -123,7 +125,6 @@ const Chats = () => {
       // console.log("selectedChat", chatDetails);
       // console.log("Data", data.message);
       socket.emit("join chat", chatId);
-      toast.success(data.message);
     } catch (err) {
       console.log(err);
       if (err?.response?.data?.message) {
@@ -155,7 +156,6 @@ const Chats = () => {
       setChatMessages((prevState) => [...prevState, data.data]);
       setMessage("");
       // console.log("Data", data.message);
-      toast.success(data.message);
     } catch (err) {
       console.log(err);
       if (err?.response?.data?.message) {
@@ -178,7 +178,6 @@ const Chats = () => {
       const { data } = await axios.get("/request/getRequests");
       setRequests(data.data);
       console.log(data.data);
-      toast.success(data.message);
     } catch (err) {
       console.log(err);
       if (err?.response?.data?.message) {
@@ -272,74 +271,79 @@ const Chats = () => {
 
   return (
     <div className={styles.containerOverall}>
-      <div className={styles.containerRight}>
-        {/* Chat History */}
-        <div className={styles.containerLeft}>
+      <div className={styles.chatContainer}>
+        {/* Left section in Chat Container */}
+        <div className={styles.chatLeft}>
           {/* Tabs */}
           <div className={styles.tabs}>
-            <Button
+            <button
               className="chatButton"
-              variant="secondary"
               style={{
-                borderTop: showChatHistory ? "1px solid lightgrey" : "1px solid lightgrey",
-                borderRight: showChatHistory ? "1px solid lightgrey" : "1px solid lightgrey",
-                borderLeft: showChatHistory ? "1px solid lightgrey" : "1px solid lightgrey",
-                borderBottom: "none",
-                backgroundColor: showChatHistory ? "#3bb4a1" : "#2d2d2d",
-                color: showChatHistory ? "black" : "white",
-                cursor: "pointer",
-                minWidth: "150px",
-                padding: "10px",
-                borderRadius: "5px 5px 0 0",
+                border: "none",
+                backgroundColor: showChatHistory ? "var(--secondary-bg)" : "var(--primary-bg)",
+                color: showChatHistory ? "var(--secondary-text)" : "var(--teritary-text)",
+                padding: "16px 0",
+                flex: "1",
               }}
               onClick={() => handleTabClick("chat")}
             >
               Chat History
-            </Button>
-            <Button
+            </button>
+
+            <button
               className="requestButton"
-              variant="secondary"
               style={{
-                borderTop: showRequests ? "1px solid lightgrey" : "1px solid lightgrey",
-                borderRight: showRequests ? "1px solid lightgrey" : "1px solid lightgrey",
-                borderLeft: showRequests ? "1px solid lightgrey" : "1px solid lightgrey",
-                borderBottom: "none",
-                backgroundColor: showChatHistory ? "#2d2d2d" : "#3bb4a1",
-                color: showChatHistory ? "white" : "black",
-                cursor: "pointer",
-                minWidth: "150px",
-                padding: "10px",
-                borderRadius: "5px 5px 0 0",
+                border: "none",
+                backgroundColor: showChatHistory ? "var(--primary-bg)" : "var(--secondary-bg)",
+                color: showChatHistory ? "var(--teritary-text)" : "var(--secondary-text)",
+                padding: "16px 0",
+                flex: "1",
               }}
               onClick={() => handleTabClick("requests")}
             >
               Requests
-            </Button>
+            </button>
           </div>
 
           {/* Chat History or Requests List */}
           {showChatHistory && (
-            <div className={styles.containerLeft}>
+            <div className={styles.contacts}>
               <ListGroup className={styles.chatList}>
                 {chatLoading ? (
                   <div className="row m-auto mt-5">
-                    <Spinner animation="border" variant="primary" />
+                    <Spinner animation="border" style={{ color: "var(--main)" }} />
                   </div>
                 ) : (
                   <>
                     {chats.map((chat) => (
                       <ListGroup.Item
+                        className={styles.contact}
                         key={chat.id}
                         onClick={() => handleChatClick(chat.id)}
                         style={{
                           cursor: "pointer",
                           marginBottom: "10px",
                           padding: "10px",
-                          backgroundColor: selectedChat?.id === chat?.id ? "#3BB4A1" : "lightgrey",
-                          borderRadius: "5px",
+                          backgroundColor: selectedChat?.id === chat?.id ? "var(--secondary-bg)" : "var(--primary-bg)",
+                          border: "none",
                         }}
                       >
-                        {chat.name}
+                        <div>
+                          <img
+                            src={chat?.picture ? chat.picture : "https://via.placeholder.com/150"}
+                            alt="Profile"
+                            style={{ width: "30px", height: "30px", borderRadius: "50%", marginRight: "10px" }}
+                          />
+                          <span
+                            style={{
+                              fontFamily: "Roboto, sans-serif",
+                              color: "var(--secondary-text)",
+                              fontWeight: "bold",
+                            }}
+                          >
+                            {chat?.name}
+                          </span>
+                        </div>
                       </ListGroup.Item>
                     ))}
                   </>
@@ -347,12 +351,13 @@ const Chats = () => {
               </ListGroup>
             </div>
           )}
+
           {showRequests && (
-            <div className={styles.containerLeft}>
-              <ListGroup style={{ padding: "10px" }}>
+            <div className={styles.requestList}>
+              <ListGroup>
                 {requestLoading ? (
                   <div className="row m-auto mt-5">
-                    <Spinner animation="border" variant="primary" />
+                    <Spinner animation="border" style={{ color: "var(--main)" }} />
                   </div>
                 ) : (
                   <>
@@ -365,7 +370,9 @@ const Chats = () => {
                           marginBottom: "10px",
                           padding: "10px",
                           backgroundColor:
-                            selectedRequest && selectedRequest.id === request.id ? "#3BB4A1" : "lightgrey",
+                            selectedRequest && selectedRequest.id === request.id
+                              ? "var(--secondary-bg)"
+                              : "var(--primary-bg)",
                           borderRadius: "5px",
                         }}
                       >
@@ -395,7 +402,7 @@ const Chats = () => {
                   <button className="connect-button" style={{ marginLeft: "0" }} onClick={handleRequestAccept}>
                     {acceptRequestLoading ? (
                       <div className="row m-auto ">
-                        <Spinner animation="border" variant="primary" />
+                        <Spinner animation="border" style={{ color: "var(--main)" }} />
                       </div>
                     ) : (
                       "Accept!"
@@ -404,7 +411,7 @@ const Chats = () => {
                   <button className="report-button" onClick={handleRequestReject}>
                     {acceptRequestLoading ? (
                       <div className="row m-auto ">
-                        <Spinner animation="border" variant="primary" />
+                        <Spinner animation="border" style={{ color: "var(--main)" }} />
                       </div>
                     ) : (
                       "Reject"
@@ -415,48 +422,38 @@ const Chats = () => {
             </div>
           )}
         </div>
-        {/* Right Section */}
-        <div className={styles.containerChat}>
-          {/* Profile Bar */}
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              padding: "10px",
-              borderBottom: "1px solid #2d2d2d",
-              minHeight: "50px",
-            }}
-          >
-            {/* Profile Info (Placeholder) */}
-            {selectedChat && (
-              <>
-                <div>
-                  <img
-                    src={selectedChat?.picture ? selectedChat.picture : "https://via.placeholder.com/150"}
-                    alt="Profile"
-                    style={{ width: "40px", height: "40px", borderRadius: "50%", marginRight: "10px" }}
-                  />
-                  <span style={{ fontFamily: "Montserrat, sans-serif", color: "#2d2d2d" }}>
-                    {selectedChat?.username}
-                  </span>
-                </div>
-                <Button variant="info" onClick={handleScheduleClick}>
-                  Request Video Call
-                </Button>
-              </>
-            )}
+        {/* Request Section */}
 
-            {/* Schedule Video Call Button */}
-          </div>
+        {/* Right section in Chat Container */}
+        <div className={styles.chatRight}>
+          {/* Profile Bar */}
+          {selectedChat && (
+            <div className={styles.chatHeader}>
+              <div>
+                <img
+                  src={selectedChat?.picture ? selectedChat.picture : "https://via.placeholder.com/150"}
+                  alt="Profile"
+                  style={{ width: "30px", height: "30px", borderRadius: "50%", marginRight: "10px" }}
+                />
+                <span style={{ fontFamily: "Roboto, sans-serif", color: "var(--secondary-text)", fontWeight: "bold" }}>
+                  {selectedChat?.name}
+                </span>
+              </div>
+
+              {/* Schedule Video Call Button */}
+              <button className={styles.videocallBtn} onClick={handleScheduleClick}>
+                Request meeting
+              </button>
+            </div>
+          )}
 
           {/* Chat Interface */}
-          <div style={{ flex: "7", position: "relative", height: "calc(100vh - 160px)" }}>
+          <div style={{ position: "relative", height: "85%" }}>
             {/* Chat Messages */}
             <div
               style={{
-                height: "calc(100% - 50px)",
+                height: "calc(100% - 35px)",
                 color: "#3BB4A1",
-                padding: "20px",
                 overflowY: "auto",
                 position: "relative",
               }}
@@ -470,17 +467,21 @@ const Chats = () => {
                         style={{
                           display: "flex",
                           justifyContent: message.sender._id == user._id ? "flex-end" : "flex-start",
+                          paddingLeft: "80px",
+                          paddingRight: "80px",
                           marginBottom: "10px",
                         }}
                       >
                         <div
                           style={{
-                            backgroundColor: message.sender._id === user._id ? "#3BB4A1" : "#2d2d2d",
-                            color: "#ffffff",
-                            padding: "10px",
+                            backgroundColor:
+                              message.sender._id === user._id ? "var(--secondary-bg)" : "var(--teritary-text)",
+                            color: message.sender._id === user._id ? "var(--secondary-text)" : "var(--primary-bg)",
+                            padding: "8px 10px",
                             borderRadius: "10px",
                             maxWidth: "70%",
                             textAlign: message.sender._id == user._id ? "right" : "left",
+                            fontSize: "14px",
                           }}
                         >
                           {message.content}
@@ -493,11 +494,14 @@ const Chats = () => {
                 <>
                   {chatMessageLoading ? (
                     <div className="row h-100 d-flex justify-content-center align-items-center">
-                      <Spinner animation="border" variant="primary" />
+                      <Spinner animation="border" style={{ color: "var(--main)" }} />
                     </div>
                   ) : (
                     <div className="row w-100 h-100 d-flex justify-content-center align-items-center">
-                      <h3 className="row w-100 d-flex justify-content-center align-items-center">
+                      <h3
+                        style={{ color: "var(--main)" }}
+                        className="row w-100 d-flex justify-content-center align-items-center"
+                      >
                         Select a chat to start messaging
                       </h3>
                     </div>
@@ -514,8 +518,8 @@ const Chats = () => {
                   bottom: "0",
                   left: "0",
                   right: "0",
-                  padding: "10px",
-                  borderTop: "1px solid #2d2d2d",
+                  padding: "10px 50px",
+                  boxShadow: "0 -4px 8px var(--secondary-bg)",
                   display: "flex",
                   alignItems: "center",
                 }}
@@ -524,23 +528,21 @@ const Chats = () => {
                   type="text"
                   placeholder="Type your message..."
                   value={message}
+                  className={styles.chatInput}
                   onChange={(e) => setMessage(e.target.value)}
-                  style={{
-                    flex: "1",
-                    padding: "10px",
-                    borderRadius: "5px",
-                    marginRight: "10px",
-                    border: "1px solid #2d2d2d",
-                  }}
                 />
-                <Button variant="success" style={{ padding: "10px 20px", borderRadius: "5px" }} onClick={sendMessage}>
+                <button className={styles.chatBtn} onClick={sendMessage}>
                   Send
-                </Button>
+                </button>
               </div>
             )}
           </div>
         </div>
       </div>
+
+      {/* <div className={styles.illustration}>
+
+      </div> */}
 
       {/* Schedule Video Call Modal */}
       {scheduleModalShow && (

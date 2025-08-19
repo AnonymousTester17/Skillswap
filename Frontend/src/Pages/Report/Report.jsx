@@ -140,7 +140,7 @@ const ReportForm = () => {
             <button type="submit" className="submit-button">
               {loading ? (
                 <>
-                  <Spinner animation="border" variant="light" size="sm" style={{ marginRight: "0.5rem" }} />
+                  <Spinner animation="border" variant="light" size="sm" style={{color: "var(--main)", marginRight: "0.5rem" }} />
                 </>
               ) : (
                 "Submit"

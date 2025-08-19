@@ -10,9 +10,9 @@
 }
 
 .discoverPage {
-  background-color: var(--grey);
-  color: white;
-  height: calc(100vh - 94px); /* Full viewport height minus navbar height */
+  background-color: white;
+  color: var(--secondary-text);
+  height: calc(100vh - 80px); /* Full viewport height minus navbar height */
   display: flex;
   flex-direction: column;
   overflow: hidden; /* Prevent the whole page from scrolling */
@@ -29,7 +29,7 @@
   width: 20vw;
   padding: 20px;
   z-index: 1;
-  box-shadow: 2px 0 8px var(--secondary-bg);
+  box-shadow: 4px 0 8px var(--secondary-bg);
   /* Height is now controlled by the parent flex container */
 }
 
@@ -59,7 +59,7 @@
 
 .headingContainer {
   flex: 1;
-  padding: 20px;
+  padding: 50px;
   overflow-y: auto; /* Allow this container to scroll if content overflows */
 }
 
@@ -71,20 +71,16 @@
 }
 
 .discoverHeading {
-  font-family: "Josefin Sans", sans-serif;
-  color: var(--yellow);
+  font-family: "Roboto", sans-serif;
+  color: var(--teritary-text);
   margin-bottom: 1rem;
-  font-size: 2rem;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 .noUsersMessage {
   color: var(--yellow);
   font-size: 1.5rem;
-}
-
-h2.discoverHeading {
-  font-family: var(--secfont);
-  font-size: 1.8rem;
 }
 
 @media (max-width: 768px) {

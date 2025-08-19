@@ -37,6 +37,8 @@
 .navLinks > :global(.nav-link):hover::after {
   width: 100%;
 }
+
+
 /* 2. Scale Transition for Login/Register Link */
 .loginRegisterLink {
   display: inline-block;

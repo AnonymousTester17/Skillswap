@@ -122,7 +122,7 @@ const Discover = () => {
         <div className={styles.headingContainer}>
           {loading ? (
             <div className="container d-flex justify-content-center align-items-center" style={{ height: "50vh" }}>
-              <Spinner animation="border" variant="primary" />
+              <Spinner animation="border" style={{ color: "var(--main)" }}/>
             </div>
           ) : (
             <>

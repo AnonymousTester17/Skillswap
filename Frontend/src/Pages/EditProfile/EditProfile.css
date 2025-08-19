@@ -1,64 +1,133 @@
-.register_page {
-  min-height: 80vh;
-  background-color: #013e38;
+.register_page2 {
+  background-color: white;
   font-family: Montserrat;
-  color: white;
+  color: var(--secondary-text);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.register_section {
-  background-color: #f2f2f2;
+.register_section2 {
   color: #2d2d2d;
-  min-height: 80vh;
   width: 50%;
-  border: 1px solid black;
+  box-shadow: 1px 1px 20px 5px var(--secondary-bg);
   padding: 20px;
   border-radius: 10px;
 }
 
-.previewForm {
-  display: flex;
-  flex-direction: column;
-  /* width: 100vw; */
-  justify-content: space-between;
+/* --- MODIFIED & NEW STYLES START HERE --- */
+
+/* Style for all labels */
+.register_section2 label {
+  color: var(--highlighter);
+  font-size: 14px;
 }
 
-/* write media query for max-width medium screen */
+.nav-tabs {
+  border-bottom-color: var(--highlighter);
+}
+
+.nav-tabs .nav-link {
+  color: var(--highlighter); /* your custom variable */
+  font-weight: 600;
+}
+
+.nav-tabs .nav-link:hover {
+  border-color: var(--highlighter) var(--highlighter) transparent;
+  color: var(--main);
+  font-weight: 600;
+}
+
+/* active tab color */
+.nav-tabs .nav-link.active {
+  color: var(--main);
+  border-color: var(--highlighter) var(--highlighter) transparent;
+  font-weight: 600;
+}
+
+/* Style for all form elements except file input */
+.register_section2 input:not([type="file"]),
+.register_section2 textarea,
+.register_section2 select {
+  border-radius: 5px;
+  padding: 5px;
+  color: var(--secondary-text);
+  width: 100%;
+  border: none;
+  outline: none;
+  box-shadow: 0px 0px 3px 0.5px var(--highlighter);
+  margin-bottom: 10px; /* Added some margin for spacing */
+  transition: box-shadow 0.2s ease-in-out; /* Smooth transition for glow */
+}
+
+/* Glow effect on focus/active */
+.register_section2 input:not([type="file"]):focus,
+.register_section2 input:not([type="file"]):active,
+.register_section2 textarea:focus,
+.register_section2 textarea:active,
+.register_section2 select:focus,
+.register_section2 select:active {
+  border: none;
+  outline: none;
+  box-shadow: 0 0 5px 2px var(--highlighter); /* Enhanced glow effect */
+}
+
+.badge {
+  background-color: var(--badge);
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.register_section2 input[type="file"]::file-selector-button {
+  background-color: var(--secondary-bg); /* your bg color */
+  color: var(--main); 
+  font-family: "Roboto";
+  font-size: 1rem;            /* text color */
+  font-weight: 500;
+  border: none;
+  border-radius: 5px;
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: filter 0.2s ease-in-out; 
+}
+
+.register_section2 input[type="file"]::file-selector-button:hover {
+  background-color: var(--secondary-bg); /* hover effect */
+  filter: brightness(95%);
+}
+
+.badge div {
+    color: var(--badge-text);
+}
+
+/* Style for Add Skill, Add Education, Add Project buttons */
+.btn-add {
+  font-family: "Roboto";
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--main);
+  padding: 8px 10px;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--secondary-bg);
+  border-color: var(--secondary-bg);
+  transition: filter 0.2s ease-in-out; /* Smooth transition for hover */
+}
+
+/* Darker hover effect for the add buttons */
+.btn-add:hover {
+  background-color: var(--secondary-bg);
+  border-color: var(--secondary-bg);
+  filter: brightness(95%); /* Darken the color on hover */
+}
+
+
+/* --- MODIFIED & NEW STYLES END HERE --- */
+
+/* Media query for max-width medium screen */
 @media (max-width: 768px) {
-  .register_section {
+  .register_section2 {
     width: 95%;
   }
-  .link {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    margin-left: 0 !important;
-  }
-}
-
-.previewContainer {
-  font-family: "Montserrat", sans-serif;
-  color: #2d2d2d;
-  margin-bottom: 20px;
-}
-
-.previewItem {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.previewLabel {
-  flex: 1;
-  font-weight: bold;
-  color: #3bb4a1;
-}
-
-.previewValue {
-  flex: 2;
-  margin-left: 20px;
 }

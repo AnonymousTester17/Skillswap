@@ -415,7 +415,7 @@ const Register = () => {
       </h1>
       {loading ? (
         <div className="row m-auto w-100 d-flex justify-content-center align-items-center" style={{ height: "80.8vh" }}>
-          <Spinner animation="border" variant="primary" />
+          <Spinner animation="border" style={{ color: "var(--main)" }}/>
         </div>
       ) : (
         <div className="register_section mb-3">
@@ -619,7 +619,7 @@ const Register = () => {
               </div>
               <div className="row m-auto d-flex justify-content-center mt-3">
                 <button className="btn btn-warning" onClick={handleSaveRegistration} disabled={saveLoading}>
-                  {saveLoading ? <Spinner animation="border" variant="primary" /> : "Save"}
+                  {saveLoading ? <Spinner animation="border" style={{ color: "var(--main)" }}/> : "Save"}
                 </button>
                 <button onClick={handleNext} className="mt-2 btn btn-primary">
                   Next
@@ -768,7 +768,7 @@ const Register = () => {
               </div>
               <div className="row m-auto d-flex justify-content-center mt-3">
                 <button className="btn btn-warning" onClick={handleSaveEducation} disabled={saveLoading}>
-                  {saveLoading ? <Spinner animation="border" variant="primary" /> : "Save"}
+                  {saveLoading ? <Spinner animation="border" style={{ color: "var(--main)" }}/> : "Save"}
                 </button>
                 <button onClick={handleNext} className="mt-2 btn btn-primary">
                   Next
@@ -996,7 +996,7 @@ const Register = () => {
               </div>
               <div className="row m-auto d-flex justify-content-center mt-3">
                 <button className="btn btn-warning" onClick={handleSaveAdditional} disabled={saveLoading}>
-                  {saveLoading ? <Spinner animation="border" variant="primary" /> : "Save"}
+                  {saveLoading ? <Spinner animation="border" style={{ color: "var(--main)" }}/> : "Save"}
                 </button>
                 <button onClick={handleNext} className="mt-2 btn btn-primary">
                   Next
@@ -1005,7 +1005,7 @@ const Register = () => {
             </Tab>
             <Tab eventKey="Preview" title="Confirm Details">
               <div>
-                <h3 style={{ color: "#3BB4A1", marginBottom: "20px" }} className="link w-100 text-center">
+                <h3 style={{ color: "#3BB4A1", marginBottom: "20px" }} className="link1 w-100 text-center">
                   Preview of the Form
                 </h3>
                 <div className="previewForm" style={{ fontFamily: "Montserrat, sans-serif", color: "#2d2d2d", marginBottom: "20px" }}>
@@ -1017,7 +1017,7 @@ const Register = () => {
                       justifyContent: "space-between",
                       marginBottom: "1.5rem",
                     }}
-                    className="link m-sm-0"
+                    className="link1 m-sm-0"
                   >
                     <span style={{ flex: 1, fontWeight: "bold", color: "#3BB4A1" }}>Name:</span>
                     <span style={{ flex: 2 }}>{form.name || "Yet to be filled"}</span>
@@ -1030,7 +1030,7 @@ const Register = () => {
                       justifyContent: "space-between",
                       marginBottom: "1.5rem",
                     }}
-                    className="link"
+                    className="link1"
                   >
                     <span style={{ flex: 1, fontWeight: "bold", color: "#3BB4A1" }}>Email ID:</span>
                     <span style={{ flex: 2 }}>{form.email || "Yet to be filled"}</span>
@@ -1043,7 +1043,7 @@ const Register = () => {
                       justifyContent: "space-between",
                       marginBottom: "1.5rem",
                     }}
-                    className="link"
+                    className="link1"
                   >
                     <span style={{ flex: 1, fontWeight: "bold", color: "#3BB4A1" }}>Username:</span>
                     <span style={{ flex: 2 }}>{form.username || "Yet to be filled"}</span>
@@ -1056,7 +1056,7 @@ const Register = () => {
                       justifyContent: "space-between",
                       marginBottom: "1.5rem",
                     }}
-                    className="link"
+                    className="link1"
                   >
                     <span style={{ flex: 1, fontWeight: "bold", color: "#3BB4A1" }}>Portfolio Link:</span>
                     <span style={{ flex: 2 }}>{form.portfolioLink || "Yet to be filled"}</span>
@@ -1069,7 +1069,7 @@ const Register = () => {
                       justifyContent: "space-between",
                       marginBottom: "1.5rem",
                     }}
-                    className="link"
+                    className="link1"
                   >
                     <span style={{ flex: 1, fontWeight: "bold", color: "#3BB4A1" }}>Github Link:</span>
                     <span style={{ flex: 2 }}>{form.githubLink || "Yet to be filled"}</span>
@@ -1083,7 +1083,7 @@ const Register = () => {
                       flexWrap: "wrap",
                       marginBottom: "10px",
                     }}
-                    className="link"
+                    className="link1"
                   >
                     <span style={{ flex: 1, fontWeight: "bold", color: "#3BB4A1" }}>Linkedin Link:</span>
                     <span
@@ -1108,7 +1108,7 @@ const Register = () => {
                       justifyContent: "space-between",
                       marginBottom: "1.5rem",
                     }}
-                    className="link"
+                    className="link1"
                   >
                     <span style={{ flex: 1, fontWeight: "bold", color: "#3BB4A1" }}>Skills Proficient At:</span>
                     <span style={{ flex: 2 }}>{form.skillsProficientAt.join(", ") || "Yet to be filled"}</span>
@@ -1121,7 +1121,7 @@ const Register = () => {
                       justifyContent: "space-between",
                       marginBottom: "1.5rem",
                     }}
-                    className="link"
+                    className="link1"
                   >
                     <span style={{ flex: 1, fontWeight: "bold", color: "#3BB4A1" }}>Skills To Learn:</span>
                     <span style={{ flex: 2 }}>{form.skillsToLearn.join(", ") || "Yet to be filled"}</span>
@@ -1135,7 +1135,7 @@ const Register = () => {
                       justifyContent: "space-between",
                       marginBottom: "1.5rem",
                     }}
-                    className="link"
+                    className="link1"
                   >
                     <span style={{ flex: 1, fontWeight: "bold", color: "#3BB4A1" }}>Bio:</span>
                     <span style={{ flex: 2 }}>{form.bio || "Yet to be filled"}</span>
@@ -1154,7 +1154,7 @@ const Register = () => {
                     }}
                     className="w-50 d-flex m-auto text-center align-content-center justify-content-center"
                   >
-                    {saveLoading ? <Spinner animation="border" variant="primary" /> : "Submit"}
+                    {saveLoading ? <Spinner animation="border" style={{ color: "var(--main)" }}/> : "Submit"}
                   </button>
                 </div>
               </div>

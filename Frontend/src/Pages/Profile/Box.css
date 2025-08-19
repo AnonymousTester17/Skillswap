@@ -4,7 +4,7 @@
   padding: 10px;
   margin-bottom: 2rem;
   border-radius: 5px;
-  box-shadow: 3px 3px 5px #5c9c94;
+  box-shadow: 3px 3px 8px 5px var(--secondary-bg);
   width: 100%;
 }
 
@@ -12,6 +12,7 @@
   margin: 0.6rem;
   margin-top: 1.5rem;
   font-size: 1rem;
+  font-weight: bold;
 }
 
 .details {
@@ -20,6 +21,7 @@
   justify-content: space-between;
   margin-top: 1rem;
   font-size: 1rem !important;
+  font-weight: bold;
   color: grey;
 }
 

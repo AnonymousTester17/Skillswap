@@ -1,31 +1,94 @@
 .containerOverall {
   background-color: #2d2d2d;
-  min-height: 90vh;
+  width: 100vw;
+  height: calc(100vh - 80px);
   font-family: Montserrat, sans-serif;
   color: white;
-  border-right: 1px solid #3bb4a1;
-}
-
-.containerRight {
   display: flex;
-  background-color: lightgrey;
+  overflow: hidden;
 }
 
-.containerLeft {
-  flex: 3;
-  background-color: #2d2d2d;
-  min-height: 90vh;
+.chatContainer {
+  display: flex;
+  width: 100%;
+}
+
+.chatLeft {
+  flex: 1;
+  box-sizing: border-box;
+  background-color: var(--primary-bg);
+  min-height: 0;
+  box-shadow: 4px 0 8px var(--secondary-bg);
+  z-index: 20;
+}
+
+.chatRight {
+  flex: 4;
+  min-height: 0;
+  background-color: white;
 }
 
 .tabs {
   display: flex;
-  padding-top: 2rem;
   justify-content: space-around;
-  border-bottom: 1px solid #3bb4a1;
+  border-bottom: 1px solid var(--secondary-bg);
 }
 
 .chatList {
+  width: 100%;
+}
+
+.chatHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 50px;
+  border-bottom: 2px solid var(--secondary-bg);
+}
+.videocallBtn {
+  border: 1px solid var(--main);
+  background-color: transparent;
+  color: var(--main);
+  font-weight: 400;
+  font-family: "Roboto";
+  padding: 5px 8px;
+  border-radius: 5px;
+  transition:
+    background-color 0.3s ease-in-out,
+    color 0.3s ease-in-out;
+}
+
+.videocallBtn:hover {
+  background-color: var(--main);
+  color: var(--primary-bg);
+}
+
+.chatInput {
+  flex: 1;
   padding: 10px;
+  border-radius: 5px;
+  margin-right: 10px;
+  border: 1px solid var(--main);
+}
+
+.chatInput:focus {
+  outline: none;
+  box-shadow: 0px 0px 8px 2px oklch(83.7% 0.128 66.29);
+  caret-color: var(--main);
+}
+
+.chatBtn {
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: var(--main);
+  color: var(--primary-bg);
+  font-weight: bold;
+  border: none;
+}
+
+.chatBtn:hover {
+  background-color: var(--hover-btn);
 }
 
 .modalBG {
@@ -50,10 +113,6 @@
   margin: 5rem;
 }
 
-.containerChat {
-  min-width: 70vw;
-}
-
 .modalContent {
   position: absolute;
   top: 50%;
@@ -66,7 +125,7 @@
 }
 
 @media (max-width: 780px) {
-  .containerRight {
+  .chatContainer {
     display: flex;
     flex-direction: column;
   }

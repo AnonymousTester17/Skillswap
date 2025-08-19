@@ -82,7 +82,7 @@ const Rating = () => {
               className="review-input"
             ></textarea>
             <button type="submit" className="submit-button">
-              {loading ? <Spinner animation="border" variant="primary" /> : "Submit"}
+              {loading ? <Spinner animation="border" style={{ color: "var(--main)" }}/> : "Submit"}
             </button>
           </div>
         </form>
