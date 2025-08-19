@@ -12,6 +12,7 @@ import ListGroup from "react-bootstrap/ListGroup";
 import Spinner from "react-bootstrap/Spinner";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
+import { FaTimes } from "react-icons/fa"; // Import the close icon
 
 import { toast } from "react-toastify";
 import ScrollableFeed from "react-scrollable-feed";
@@ -546,21 +547,14 @@ const Chats = () => {
 
       {/* Schedule Video Call Modal */}
       {scheduleModalShow && (
-        <div
-          style={{
-            position: "fixed",
-            top: "0",
-            left: "0",
-            width: "100%",
-            height: "100%",
-            backgroundColor: "rgba(0, 0, 0, 0.7)",
-            zIndex: "500",
-          }}
-        >
-          <div className={styles.modal}>
+        <div className={styles.scheduleModalOverlay} onClick={() => setScheduleModalShow(false)}>
+          <div className={styles.scheduleModalContent} onClick={(e) => e.stopPropagation()}>
+            <button className={styles.closeButton} onClick={() => setScheduleModalShow(false)}>
+              <FaTimes />
+            </button>
             <h3>Request a Meeting</h3>
             <Form>
-              <Form.Group controlId="formDate" style={{ marginBottom: "20px", zIndex: "1001" }}>
+              <Form.Group controlId="formDate" style={{ marginBottom: "20px" }}>
                 <Form.Label>Preferred Date</Form.Label>
                 <Form.Control
                   type="date"
@@ -569,7 +563,7 @@ const Chats = () => {
                 />
               </Form.Group>
 
-              <Form.Group controlId="formTime" style={{ marginBottom: "20px", zIndex: "1001" }}>
+              <Form.Group controlId="formTime" style={{ marginBottom: "20px" }}>
                 <Form.Label>Preferred Time</Form.Label>
                 <Form.Control
                   type="time"
