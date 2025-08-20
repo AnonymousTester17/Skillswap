@@ -23,16 +23,21 @@ const App = () => {
       <Header setShowLogin={setShowLogin} />
       <ToastContainer position="top-right" />
       <Routes>
-        <Route element={<PrivateRoutes />}>
-          <Route path="/chats" element={<Chats />} />
-        </Route>
-        <Route path="/" element={<LandingPage showLogin={showLogin} setShowLogin={setShowLogin} />} />
-        <Route path="/discover" element={<Discover />} />
+        <Route
+          path="/"
+          element={
+            <LandingPage showLogin={showLogin} setShowLogin={setShowLogin} />
+          }
+        />
         <Route path="/register" element={<Register />} />
-        <Route path="/edit_profile" element={<EditProfile />} />
-        <Route path="/report/:username" element={<Report />} />
-        <Route path="/profile/:username" element={<Profile />} />
-        <Route path="/rating/:username" element={<Rating />} />
+        <Route element={<PrivateRoutes />}>
+          <Route path="/discover" element={<Discover />} />
+          <Route path="/chats" element={<Chats />} />
+          <Route path="/edit_profile" element={<EditProfile />} />
+          <Route path="/report/:username" element={<Report />} />
+          <Route path="/profile/:username" element={<Profile />} />
+          <Route path="/rating/:username" element={<Rating />} />
+        </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
