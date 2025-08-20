@@ -25,9 +25,8 @@ const UserContextProvider = ({ children }) => {
       const publicPaths = ["/", "/login", "/register", "/discover"];
       const currentPath = location.pathname;
 
-      // If the current path is NOT a public one, redirect to login.
-      // This correctly allows access to the landing page ("/") and all its hash links.
-      if (!publicPaths.includes(currentPath)) {
+      // If the current path is NOT a public one and does not have a hash, redirect to login.
+      if (!publicPaths.includes(currentPath) && !location.hash) {
         navigate("/login");
       }
     }

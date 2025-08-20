@@ -35,6 +35,7 @@ const App = () => {
         <Route path="/rating/:username" element={<Rating />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <Footer />
     </>
   );
 };
