@@ -531,6 +531,11 @@ const Chats = () => {
                   value={message}
                   className={styles.chatInput}
                   onChange={(e) => setMessage(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      sendMessage();
+                    }
+                  }}
                 />
                 <button className={styles.chatBtn} onClick={sendMessage}>
                   Send
