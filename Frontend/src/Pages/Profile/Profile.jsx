@@ -83,7 +83,8 @@ const Profile = () => {
 
   return (
     <div className={styles["profile-container"]}>
-      <h2 className={styles["profile-heading"]}>My Profile</h2>
+      {user?.username !== username ? "" : <h2 className={styles["profile-heading"]}>My Profile</h2>}
+      
       <div className={styles["container"]} style={{ minHeight: "86vh" }}>
         {loading ? (
           <div className="row d-flex justify-content-center align-items-center" style={{ height: "50vh" }}>
