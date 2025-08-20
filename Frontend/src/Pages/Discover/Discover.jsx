@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { useUser } from "../../util/UserContext";
 import axios from "axios";
 import { toast } from "react-toastify";
-import Nav from "react-bootstrap/Nav";
 import ProfileCard from "./ProfileCard";
 import Spinner from "react-bootstrap/Spinner";
 import { FaUser, FaFire, FaCode, FaBrain, FaEllipsisH } from "react-icons/fa";
@@ -12,7 +11,7 @@ import styles from "./Discover.module.css";
 const Discover = () => {
   const navigate = useNavigate();
   const { user, setUser } = useUser();
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [discoverUsers, setDiscoverUsers] = useState([]);
   const [webDevUsers, setWebDevUsers] = useState([]);
   const [mlUsers, setMlUsers] = useState([]);
@@ -20,46 +19,30 @@ const Discover = () => {
   const [activeFilter, setActiveFilter] = useState("for-you");
 
   useEffect(() => {
-    const getUser = async () => {
-      try {
-        setLoading(true);
-        const { data } = await axios.get(`/user/registered/getDetails`);
-        setUser(data.data);
-        localStorage.setItem("userInfo", JSON.stringify(data.data));
-      } catch (error) {
-        console.log(error);
-        if (error?.response?.data?.message) {
-          toast.error(error.response.data.message);
-        }
-        localStorage.removeItem("userInfo");
-        setUser(null);
-        await axios.get("/auth/logout");
-        navigate("/login");
-      }
-    };
     const getDiscoverUsers = async () => {
-      try {
-        const { data } = await axios.get("/user/discover");
-        setDiscoverUsers(data.data.forYou);
-        setWebDevUsers(data.data.webDev);
-        setMlUsers(data.data.ml);
-        setOtherUsers(data.data.others);
-      } catch (error) {
-        console.log(error);
-        if (error?.response?.data?.message) {
-          toast.error(error.response.data.message);
+      if (user) {
+        try {
+          const { data } = await axios.get("/user/discover");
+          setDiscoverUsers(data.data.forYou);
+          setWebDevUsers(data.data.webDev);
+          setMlUsers(data.data.ml);
+          setOtherUsers(data.data.others);
+        } catch (error) {
+          console.log(error);
+          if (error?.response?.data?.message) {
+            toast.error(error.response.data.message);
+          }
+          localStorage.removeItem("userInfo");
+          setUser(null);
+          await axios.get("/auth/logout");
+          navigate("/");
+        } finally {
+          setLoading(false);
         }
-        localStorage.removeItem("userInfo");
-        setUser(null);
-        await axios.get("/auth/logout");
-        navigate("/login");
-      } finally {
-        setLoading(false);
       }
     };
-    getUser();
     getDiscoverUsers();
-  }, [navigate, setUser]);
+  }, [user, navigate, setUser]);
 
   const renderProfiles = (users) => {
     if (users && users.length > 0) {
@@ -78,11 +61,17 @@ const Discover = () => {
     return <h1 className={styles.noUsersMessage}>No users to show</h1>;
   };
 
+  if (loading) {
+    return (
+      <div className="d-flex justify-content-center align-items-center" style={{ height: "calc(100vh - 80px)" }}>
+        <Spinner animation="border" style={{ color: "var(--main)" }} />
+      </div>
+    );
+  }
+
   return (
     <div className={styles.discoverPage}>
       <div className={styles.contentContainer}>
-
-
         <div className={styles.navBar}>
           <ul defaultActiveKey="/home" className="flex-column" style={{ listStyleType: "none", paddingLeft: "0px" }}>
             <li
@@ -117,46 +106,37 @@ const Discover = () => {
             </li>
           </ul>
         </div>
-        
 
         <div className={styles.headingContainer}>
-          {loading ? (
-            <div className="container d-flex justify-content-center align-items-center" style={{ height: "50vh" }}>
-              <Spinner animation="border" style={{ color: "var(--main)" }}/>
-            </div>
-          ) : (
-            <>
-              {activeFilter === "for-you" && (
-                <section id="for-you">
-                  <h2 className={styles.discoverHeading}>For You</h2>
-                  <div className={styles.profileCards}>{renderProfiles(discoverUsers)}</div>
-                </section>
-              )}
-              {activeFilter === "popular" && (
-                <section id="popular">
-                  <h2 className={styles.discoverHeading}>Popular</h2>
-                  <div className={styles.profileCards}>{renderProfiles(webDevUsers)}</div>
-                </section>
-              )}
-              {activeFilter === "web-development" && (
-                <section id="web-development">
-                  <h2 className={styles.discoverHeading}>Web Development</h2>
-                  <div className={styles.profileCards}>{renderProfiles(webDevUsers)}</div>
-                </section>
-              )}
-              {activeFilter === "machine-learning" && (
-                <section id="machine-learning">
-                  <h2 className={styles.discoverHeading}>Machine Learning</h2>
-                  <div className={styles.profileCards}>{renderProfiles(mlUsers)}</div>
-                </section>
-              )}
-              {activeFilter === "others" && (
-                <section id="others">
-                  <h2 className={styles.discoverHeading}>Others</h2>
-                  <div className={styles.profileCards}>{renderProfiles(otherUsers)}</div>
-                </section>
-              )}
-            </>
+          {activeFilter === "for-you" && (
+            <section id="for-you">
+              <h2 className={styles.discoverHeading}>For You</h2>
+              <div className={styles.profileCards}>{renderProfiles(discoverUsers)}</div>
+            </section>
+          )}
+          {activeFilter === "popular" && (
+            <section id="popular">
+              <h2 className={styles.discoverHeading}>Popular</h2>
+              <div className={styles.profileCards}>{renderProfiles(webDevUsers)}</div>
+            </section>
+          )}
+          {activeFilter === "web-development" && (
+            <section id="web-development">
+              <h2 className={styles.discoverHeading}>Web Development</h2>
+              <div className={styles.profileCards}>{renderProfiles(webDevUsers)}</div>
+            </section>
+          )}
+          {activeFilter === "machine-learning" && (
+            <section id="machine-learning">
+              <h2 className={styles.discoverHeading}>Machine Learning</h2>
+              <div className={styles.profileCards}>{renderProfiles(mlUsers)}</div>
+            </section>
+          )}
+          {activeFilter === "others" && (
+            <section id="others">
+              <h2 className={styles.discoverHeading}>Others</h2>
+              <div className={styles.profileCards}>{renderProfiles(otherUsers)}</div>
+            </section>
           )}
         </div>
       </div>
