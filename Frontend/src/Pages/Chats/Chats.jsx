@@ -438,7 +438,6 @@ const Chats = () => {
             </div>
           )}
         </div>
-        {/* Request Section */}
 
         {/* Right section in Chat Container */}
         <div className={styles.chatRight}>
