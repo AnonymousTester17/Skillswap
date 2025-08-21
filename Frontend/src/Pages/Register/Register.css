@@ -1,8 +1,7 @@
 .register_page1 {
-  min-height: 80vh;
-  background-color: #013e38;
+  background-color: white;
   font-family: Montserrat;
-  color: white;
+  color: var(--secondary-text);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -10,11 +9,9 @@
 }
 
 .register_section1 {
-  background-color: #f2f2f2;
   color: #2d2d2d;
-  min-height: 80vh;
   width: 50%;
-  border: 1px solid black;
+  box-shadow: 1px 1px 20px 5px var(--secondary-bg);
   padding: 20px;
   border-radius: 10px;
 }
@@ -25,6 +22,76 @@
   width: 100vw;
   justify-content: space-between;
 }
+
+
+/* --- MODIFIED & NEW STYLES START HERE --- */
+
+/* Style for all labels */
+.register_section1 label {
+  color: var(--highlighter);
+  font-size: 14px;
+}
+
+/* Style for all form elements except file input */
+.register_section1 input,
+.register_section1 textarea,
+.register_section1 select {
+  border-radius: 5px;
+  padding: 5px;
+  color: var(--secondary-text);
+  width: 100%;
+  border: none;
+  outline: none;
+  box-shadow: 0px 0px 3px 0.5px var(--highlighter);
+  margin-bottom: 10px; /* Added some margin for spacing */
+  transition: box-shadow 0.2s ease-in-out; /* Smooth transition for glow */
+}
+
+/* Glow effect on focus/active */
+.register_section1 input:focus,
+.register_section1 input:active,
+.register_section1 textarea:focus,
+.register_section1 textarea:active,
+.register_section1 select:focus,
+.register_section1 select:active {
+  border: none;
+  outline: none;
+  box-shadow: 0 0 5px 2px var(--highlighter); /* Enhanced glow effect */
+}
+
+.badge {
+  background-color: var(--badge);
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.badge div {
+    color: var(--badge-text);
+}
+
+/* Style for Add Skill, Add Education, Add Project buttons */
+.btn-add {
+  font-family: "Roboto";
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--main);
+  padding: 8px 10px;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--secondary-bg);
+  border-color: var(--secondary-bg);
+  transition: filter 0.2s ease-in-out; /* Smooth transition for hover */
+}
+
+/* Darker hover effect for the add buttons */
+.btn-add:hover {
+  background-color: var(--secondary-bg);
+  border-color: var(--secondary-bg);
+  filter: brightness(95%); /* Darken the color on hover */
+}
+
+
+
 
 /* write media query for max-width medium screen */
 @media (max-width: 768px) {
@@ -37,28 +104,4 @@
     flex-direction: column;
     margin-left: 0 !important;
   }
-}
-
-.previewContainer1 {
-  font-family: "Montserrat", sans-serif;
-  color: #2d2d2d;
-  margin-bottom: 20px;
-}
-
-.previewItem1 {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.previewLabel1 {
-  flex: 1;
-  font-weight: bold;
-  color: #3bb4a1;
-}
-
-.previewValue1{
-  flex: 2;
-  margin-left: 20px;
 }

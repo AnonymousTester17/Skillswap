@@ -408,9 +408,22 @@ const Register = () => {
     }
   };
 
+
+
+
+
+
+
+
+
+
+
+
+
+
   return (
-    <div className="register_page ">
-      <h1 className="m-4" style={{ fontFamily: "Oswald", color: "#3BB4A1" }}>
+    <div className="register_page1">
+      <h1 className="m-4" style={{ fontFamily: "Roboto", color: "var(--teritary-text)", fontSize: "1.5rem", fontWeight: "bold"}}>
         Registration Form
       </h1>
       {loading ? (
@@ -418,7 +431,7 @@ const Register = () => {
           <Spinner animation="border" style={{ color: "var(--main)" }}/>
         </div>
       ) : (
-        <div className="register_section mb-3">
+        <div className="register_section1 mb-3">
           <Tabs
             defaultActiveKey="registration"
             id="justify-tab-example"
@@ -426,28 +439,22 @@ const Register = () => {
             activeKey={activeKey}
             onSelect={(k) => setActiveKey(k)}
           >
-            <Tab eventKey="registration" title="Registration">
+            <Tab eventKey="registration" title="Registration" style={{padding: "0 20px"}}>
               {/* Name */}
               <div>
-                <label style={{ color: "#3BB4A1" }}>Name</label>
+                <label  >Name</label>
                 <br />
                 <input
                   type="text"
                   name="username"
                   onChange={handleInputChange}
-                  style={{
-                    borderRadius: "5px",
-                    border: "1px solid #3BB4A1",
-                    padding: "5px",
-                    width: "100%",
-                  }}
                   value={form.name}
                   disabled
                 />
               </div>
               {/* Email */}
               <div>
-                <label className="mt-3" style={{ color: "#3BB4A1" }}>
+                <label className="mt-3"  >
                   Email
                 </label>
                 <br />
@@ -455,19 +462,14 @@ const Register = () => {
                   type="text"
                   name="username"
                   onChange={handleInputChange}
-                  style={{
-                    borderRadius: "5px",
-                    border: "1px solid #3BB4A1",
-                    padding: "5px",
-                    width: "100%",
-                  }}
+                   
                   value={form.email}
                   disabled
                 />
               </div>
               {/* Username */}
               <div>
-                <label className="mt-3" style={{ color: "#3BB4A1" }}>
+                <label className="mt-3"  >
                   Username
                 </label>
                 <br />
@@ -476,18 +478,13 @@ const Register = () => {
                   name="username"
                   onChange={handleInputChange}
                   value={form.username}
-                  style={{
-                    borderRadius: "5px",
-                    border: "1px solid #3BB4A1",
-                    padding: "5px",
-                    width: "100%",
-                  }}
+                   
                   placeholder="Enter your username"
                 />
               </div>
               {/* Linkedin Profile Link*/}
               <div>
-                <label className="mt-3" style={{ color: "#3BB4A1" }}>
+                <label className="mt-3"  >
                   Linkedin Link
                 </label>
                 <br />
@@ -496,18 +493,13 @@ const Register = () => {
                   name="linkedinLink"
                   value={form.linkedinLink}
                   onChange={handleInputChange}
-                  style={{
-                    borderRadius: "5px",
-                    border: "1px solid #3BB4A1",
-                    padding: "5px",
-                    width: "100%",
-                  }}
+                   
                   placeholder="Enter your Linkedin link"
                 />
               </div>
               {/* Github Profile Link*/}
               <div>
-                <label className="mt-3" style={{ color: "#3BB4A1" }}>
+                <label className="mt-3"  >
                   Github Link
                 </label>
                 <br />
@@ -516,18 +508,13 @@ const Register = () => {
                   name="githubLink"
                   value={form.githubLink}
                   onChange={handleInputChange}
-                  style={{
-                    borderRadius: "5px",
-                    border: "1px solid #3BB4A1",
-                    padding: "5px",
-                    width: "100%",
-                  }}
+                   
                   placeholder="Enter your Github link"
                 />
               </div>
               {/* Portfolio Link */}
               <div>
-                <label className="mt-3" style={{ color: "#3BB4A1" }}>
+                <label className="mt-3"  >
                   Portfolio Link
                 </label>
                 <br />
@@ -536,18 +523,13 @@ const Register = () => {
                   name="portfolioLink"
                   value={form.portfolioLink}
                   onChange={handleInputChange}
-                  style={{
-                    borderRadius: "5px",
-                    border: "1px solid #3BB4A1",
-                    padding: "5px",
-                    width: "100%",
-                  }}
+                   
                   placeholder="Enter your portfolio link"
                 />
               </div>
               {/* Skills Proficient At */}
               <div>
-                <label className="mt-3" style={{ color: "#3BB4A1" }}>
+                <label className="mt-3"  >
                   Skills Proficient At
                 </label>
                 <br />
@@ -566,25 +548,23 @@ const Register = () => {
                 {form.skillsProficientAt.length > 0 && (
                   <div>
                     {form.skillsProficientAt.map((skill, index) => (
-                      <Badge
+                      <div
                         key={index}
-                        bg="secondary"
-                        className="ms-2 mt-2"
-                        style={{ cursor: "pointer" }}
+                        className="badge ms-2 mt-2"
                         onClick={(event) => handleRemoveSkill(event, "skills_proficient_at")}
                       >
                         <div className="span d-flex p-1 fs-7 ">{skill} &#10005;</div>
-                      </Badge>
+                      </div>
                     ))}
                   </div>
                 )}
-                <button className="btn btn-primary mt-3 ms-1" name="skill_proficient_at" onClick={handleAddSkill}>
+                <button className="btn-add mt-3 ms-1" name="skill_proficient_at" onClick={handleAddSkill}>
                   Add Skill
                 </button>
               </div>
               {/* Skills to learn */}
               <div>
-                <label style={{ color: "#3BB4A1", marginTop: "20px" }}>Skills To Learn</label>
+                <label style={{ marginTop: "20px" }}>Skills To Learn</label>
                 <br />
                 <Form.Select
                   aria-label="Default select example"
@@ -601,19 +581,17 @@ const Register = () => {
                 {form.skillsToLearn.length > 0 && (
                   <div>
                     {form.skillsToLearn.map((skill, index) => (
-                      <Badge
+                      <div
                         key={index}
-                        bg="secondary"
-                        className="ms-2 mt-2 "
-                        style={{ cursor: "pointer" }}
+                        className="badge ms-2 mt-2 "
                         onClick={(event) => handleRemoveSkill(event, "skills_to_learn")}
                       >
                         <div className="span d-flex p-1 fs-7 ">{skill} &#10005;</div>
-                      </Badge>
+                      </div>
                     ))}
                   </div>
                 )}
-                <button className="btn btn-primary mt-3 ms-1" name="skill_to_learn" onClick={handleAddSkill}>
+                <button className="btn-add mt-3 ms-1" name="skill_to_learn" onClick={handleAddSkill}>
                   Add Skill
                 </button>
               </div>
@@ -626,9 +604,10 @@ const Register = () => {
                 </button>
               </div>
             </Tab>
-            <Tab eventKey="education" title="Education">
+
+            <Tab eventKey="education" title="Education" style={{padding: "0 20px"}}>
               {form.education.map((edu, index) => (
-                <div className="border border-dark rounded-1 p-3 m-1" key={edu.id}>
+                <div className=" p-3 m-1" key={edu.id}>
                   {index !== 0 && (
                     <span className="w-100 d-flex justify-content-end">
                       <button className="w-25" onClick={(e) => handleRemoveEducation(e, edu.id)}>
@@ -636,22 +615,17 @@ const Register = () => {
                       </button>
                     </span>
                   )}
-                  <label style={{ color: "#3BB4A1" }}>Institution Name</label>
+                  <label  >Institution Name</label>
                   <br />
                   <input
                     type="text"
                     name="institution"
                     value={edu.institution}
                     onChange={(e) => handleEducationChange(e, index)}
-                    style={{
-                      borderRadius: "5px",
-                      border: "1px solid #3BB4A1",
-                      padding: "5px",
-                      width: "100%",
-                    }}
+                     
                     placeholder="Enter your institution name"
                   />
-                  <label className="mt-2" style={{ color: "#3BB4A1" }}>
+                  <label className="mt-2"  >
                     Degree
                   </label>
                   <br />
@@ -660,15 +634,10 @@ const Register = () => {
                     name="degree"
                     value={edu.degree}
                     onChange={(e) => handleEducationChange(e, index)}
-                    style={{
-                      borderRadius: "5px",
-                      border: "1px solid #3BB4A1",
-                      padding: "5px",
-                      width: "100%",
-                    }}
+                     
                     placeholder="Enter your degree"
                   />
-                  <label className="mt-2" style={{ color: "#3BB4A1" }}>
+                  <label className="mt-2"  >
                     Grade/Percentage
                   </label>
                   <br />
@@ -677,17 +646,12 @@ const Register = () => {
                     name="score"
                     value={edu.score}
                     onChange={(e) => handleEducationChange(e, index)}
-                    style={{
-                      borderRadius: "5px",
-                      border: "1px solid #3BB4A1",
-                      padding: "5px",
-                      width: "100%",
-                    }}
+                     
                     placeholder="Enter your grade/percentage"
                   />
                   <div className="row w-100">
                     <div className="col-md-6">
-                      <label className="mt-2" style={{ color: "#3BB4A1" }}>
+                      <label className="mt-2"  >
                         Start Date
                       </label>
                       <br />
@@ -696,16 +660,10 @@ const Register = () => {
                         name="startDate"
                         value={edu.startDate ? new Date(edu.startDate).toISOString().split("T")[0] : ""}
                         onChange={(e) => handleEducationChange(e, index)}
-                        style={{
-                          borderRadius: "5px",
-                          border: "1px solid #3BB4A1",
-                          padding: "5px",
-                          width: "100%",
-                        }}
                       />
                     </div>
                     <div className="col-md-6">
-                      <label className="mt-2" style={{ color: "#3BB4A1" }}>
+                      <label className="mt-2"  >
                         End Date
                       </label>
                       <br />
@@ -714,16 +672,10 @@ const Register = () => {
                         name="endDate"
                         value={edu.endDate ? new Date(edu.endDate).toISOString().split("T")[0] : ""}
                         onChange={(e) => handleEducationChange(e, index)}
-                        style={{
-                          borderRadius: "5px",
-                          border: "1px solid #3BB4A1",
-                          padding: "5px",
-                          width: "100%",
-                        }}
                       />
                     </div>
                   </div>
-                  <label className="mt-2" style={{ color: "#3BB4A1" }}>
+                  <label className="mt-2"  >
                     Description
                   </label>
                   <br />
@@ -732,19 +684,14 @@ const Register = () => {
                     name="description"
                     value={edu.description}
                     onChange={(e) => handleEducationChange(e, index)}
-                    style={{
-                      borderRadius: "5px",
-                      border: "1px solid #3BB4A1",
-                      padding: "5px",
-                      width: "100%",
-                    }}
+                     
                     placeholder="Enter your exp or achievements"
                   />
                 </div>
               ))}
               <div className="row my-2 d-flex justify-content-center">
                 <button
-                  className="btn btn-primary w-50"
+                  className="btn-add w-50"
                   onClick={() => {
                     setForm((prevState) => ({
                       ...prevState,
@@ -775,26 +722,20 @@ const Register = () => {
                 </button>
               </div>
             </Tab>
-            <Tab eventKey="longer-tab" title="Additional">
+
+            <Tab eventKey="longer-tab" title="Additional" style={{padding: "0 20px"}}>
               <div>
-                <label style={{ color: "#3BB4A1", marginTop: "20px" }}>Bio (Max 500 Character)</label>
+                <label style={{ marginTop: "20px" }}>Bio (Max 500 Character)</label>
                 <br />
                 <textarea
                   name="bio"
                   value={form.bio}
                   onChange={handleInputChange}
-                  style={{
-                    borderRadius: "5px",
-                    border: "1px solid #3BB4A1",
-                    padding: "5px",
-                    width: "100%",
-                    marginBottom: "10px",
-                  }}
                   placeholder="Enter your bio"
                 ></textarea>
               </div>
               <div className="">
-                <label style={{ color: "#3BB4A1" }}>Projects</label>
+                <label  >Projects</label>
 
                 {form.projects.map((project, index) => (
                   <div className="border border-dark rounded-1 p-3 m-1" key={project.id}>
@@ -811,7 +752,7 @@ const Register = () => {
                         cross
                       </button>
                     </span>
-                    <label style={{ color: "#3BB4A1" }}>Title</label>
+                    <label  >Title</label>
                     <br />
                     <input
                       type="text"
@@ -826,7 +767,7 @@ const Register = () => {
                       }}
                       placeholder="Enter your project title"
                     />
-                    <label className="mt-2" style={{ color: "#3BB4A1" }}>
+                    <label className="mt-2"  >
                       Tech Stack
                     </label>
                     <br />
@@ -847,11 +788,9 @@ const Register = () => {
                     {techStack[index].length > 0 && (
                       <div>
                         {form.projects[index].techStack.map((skill, i) => (
-                          <Badge
+                          <div
                             key={i}
-                            bg="secondary"
-                            className="ms-2 mt-2"
-                            style={{ cursor: "pointer" }}
+                            className="badge ms-2 mt-2"
                             onClick={(e) => {
                               setForm((prevState) => ({
                                 ...prevState,
@@ -864,12 +803,12 @@ const Register = () => {
                             }}
                           >
                             <div className="span d-flex p-1 fs-7 ">{skill} &#10005;</div>
-                          </Badge>
+                          </div>
                         ))}
                       </div>
                     )}
                     <button
-                      className="btn btn-primary mt-3 ms-1"
+                      className="btn-add mt-3 ms-1"
                       name="tech_stack"
                       onClick={(e) => {
                         if (techStack[index] === "Select some Tech Stack") {
@@ -892,7 +831,7 @@ const Register = () => {
                     </button>
                     <div className="row">
                       <div className="col-md-6">
-                        <label className="mt-2" style={{ color: "#3BB4A1" }}>
+                        <label className="mt-2"  >
                           Start Date
                         </label>
                         <br />
@@ -910,7 +849,7 @@ const Register = () => {
                         />
                       </div>
                       <div className="col-md-6">
-                        <label className="mt-2" style={{ color: "#3BB4A1" }}>
+                        <label className="mt-2"  >
                           End Date
                         </label>
                         <br />
@@ -928,7 +867,7 @@ const Register = () => {
                         />
                       </div>
                     </div>
-                    <label className="mt-2" style={{ color: "#3BB4A1" }}>
+                    <label className="mt-2"  >
                       Project Link
                     </label>
                     <br />
@@ -946,7 +885,7 @@ const Register = () => {
                       placeholder="Enter your project link"
                     />
 
-                    <label className="mt-2" style={{ color: "#3BB4A1" }}>
+                    <label className="mt-2"  >
                       Description
                     </label>
                     <br />
@@ -968,7 +907,7 @@ const Register = () => {
 
                 <div className="row my-2 d-flex justify-content-center">
                   <button
-                    className="btn btn-primary w-50"
+                    className="btn-add w-50"
                     onClick={() => {
                       setTechStack((prevState) => {
                         return [...prevState, "Select some Tech Stack"];
@@ -1003,11 +942,10 @@ const Register = () => {
                 </button>
               </div>
             </Tab>
-            <Tab eventKey="Preview" title="Confirm Details">
+
+            <Tab eventKey="Preview" title="Confirm Details" style={{padding: "0 20px"}}>
               <div>
-                <h3 style={{ color: "#3BB4A1", marginBottom: "20px" }} className="link1 w-100 text-center">
-                  Preview of the Form
-                </h3>
+                
                 <div className="previewForm" style={{ fontFamily: "Montserrat, sans-serif", color: "#2d2d2d", marginBottom: "20px" }}>
                   <div
                     style={{
@@ -1015,11 +953,11 @@ const Register = () => {
                       width: "70vw",
                       alignItems: "center",
                       justifyContent: "space-between",
-                      marginBottom: "1.5rem",
+                      margin: "1.5rem 0",
                     }}
-                    className="link1 m-sm-0"
+                    className="link1"
                   >
-                    <span style={{ flex: 1, fontWeight: "bold", color: "#3BB4A1" }}>Name:</span>
+                    <span style={{ flex: 1, fontWeight: "bold", color: "var(--highlighter)" }}>Name:</span>
                     <span style={{ flex: 2 }}>{form.name || "Yet to be filled"}</span>
                   </div>
                   <div
@@ -1032,7 +970,7 @@ const Register = () => {
                     }}
                     className="link1"
                   >
-                    <span style={{ flex: 1, fontWeight: "bold", color: "#3BB4A1" }}>Email ID:</span>
+                    <span style={{ flex: 1, fontWeight: "bold", color: "var(--highlighter)" }}>Email ID:</span>
                     <span style={{ flex: 2 }}>{form.email || "Yet to be filled"}</span>
                   </div>
                   <div
@@ -1045,7 +983,7 @@ const Register = () => {
                     }}
                     className="link1"
                   >
-                    <span style={{ flex: 1, fontWeight: "bold", color: "#3BB4A1" }}>Username:</span>
+                    <span style={{ flex: 1, fontWeight: "bold", color: "var(--highlighter)" }}>Username:</span>
                     <span style={{ flex: 2 }}>{form.username || "Yet to be filled"}</span>
                   </div>
                   <div
@@ -1058,7 +996,7 @@ const Register = () => {
                     }}
                     className="link1"
                   >
-                    <span style={{ flex: 1, fontWeight: "bold", color: "#3BB4A1" }}>Portfolio Link:</span>
+                    <span style={{ flex: 1, fontWeight: "bold", color: "var(--highlighter)" }}>Portfolio Link:</span>
                     <span style={{ flex: 2 }}>{form.portfolioLink || "Yet to be filled"}</span>
                   </div>
                   <div
@@ -1071,7 +1009,7 @@ const Register = () => {
                     }}
                     className="link1"
                   >
-                    <span style={{ flex: 1, fontWeight: "bold", color: "#3BB4A1" }}>Github Link:</span>
+                    <span style={{ flex: 1, fontWeight: "bold", color: "var(--highlighter)" }}>Github Link:</span>
                     <span style={{ flex: 2 }}>{form.githubLink || "Yet to be filled"}</span>
                   </div>
                   <div
@@ -1085,7 +1023,7 @@ const Register = () => {
                     }}
                     className="link1"
                   >
-                    <span style={{ flex: 1, fontWeight: "bold", color: "#3BB4A1" }}>Linkedin Link:</span>
+                    <span style={{ flex: 1, fontWeight: "bold", color: "var(--highlighter)" }}>Linkedin Link:</span>
                     <span
                       style={{
                         width: "70vw",
@@ -1110,7 +1048,7 @@ const Register = () => {
                     }}
                     className="link1"
                   >
-                    <span style={{ flex: 1, fontWeight: "bold", color: "#3BB4A1" }}>Skills Proficient At:</span>
+                    <span style={{ flex: 1, fontWeight: "bold", color: "var(--highlighter)" }}>Skills Proficient At:</span>
                     <span style={{ flex: 2 }}>{form.skillsProficientAt.join(", ") || "Yet to be filled"}</span>
                   </div>
                   <div
@@ -1123,7 +1061,7 @@ const Register = () => {
                     }}
                     className="link1"
                   >
-                    <span style={{ flex: 1, fontWeight: "bold", color: "#3BB4A1" }}>Skills To Learn:</span>
+                    <span style={{ flex: 1, fontWeight: "bold", color: "var(--highlighter)" }}>Skills To Learn:</span>
                     <span style={{ flex: 2 }}>{form.skillsToLearn.join(", ") || "Yet to be filled"}</span>
                   </div>
 
@@ -1137,7 +1075,7 @@ const Register = () => {
                     }}
                     className="link1"
                   >
-                    <span style={{ flex: 1, fontWeight: "bold", color: "#3BB4A1" }}>Bio:</span>
+                    <span style={{ flex: 1, fontWeight: "bold", color: "var(--highlighter)" }}>Bio:</span>
                     <span style={{ flex: 2 }}>{form.bio || "Yet to be filled"}</span>
                   </div>
                 </div>
@@ -1145,8 +1083,9 @@ const Register = () => {
                   <button
                     onClick={handleSubmit}
                     style={{
-                      backgroundColor: "#3BB4A1",
+                      backgroundColor: "var(--main)",
                       color: "white",
+                      fontWeight: "bold",
                       padding: "10px 20px",
                       border: "none",
                       borderRadius: "5px",
@@ -1154,7 +1093,7 @@ const Register = () => {
                     }}
                     className="w-50 d-flex m-auto text-center align-content-center justify-content-center"
                   >
-                    {saveLoading ? <Spinner animation="border" style={{ color: "var(--main)" }}/> : "Submit"}
+                    {saveLoading ? <Spinner animation="border" style={{ color: "var(--primary-bg)" }}/> : "Submit"}
                   </button>
                 </div>
               </div>

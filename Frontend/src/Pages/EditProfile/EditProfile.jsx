@@ -416,7 +416,7 @@ const EditProfile = () => {
         </div>
       ) : (
         <div className="register_section2 mb-5">
-
+          
           <Tabs
             defaultActiveKey="registration"
             id="justify-tab-example"
