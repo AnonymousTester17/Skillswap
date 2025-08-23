@@ -136,3 +136,10 @@ button.primary:hover {
     height: auto;
   }
 }
+
+@media (max-width: 425px) {
+  .cardContainer {
+    width: 60vw;
+    height: 320px;
+  }
+}

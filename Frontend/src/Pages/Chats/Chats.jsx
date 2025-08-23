@@ -512,10 +512,10 @@ const Chats = () => {
                       <Spinner animation="border" style={{ color: "var(--main)" }} />
                     </div>
                   ) : (
-                    <div className="row w-100 h-100 d-flex justify-content-center align-items-center">
+                    <div className="p-8 row w-100 h-100 d-flex justify-content-center align-items-center">
                       <h3
-                        style={{ color: "var(--main)" }}
-                        className="row w-100 d-flex justify-content-center align-items-center"
+                        style={{ color: "var(--main)", padding: "60px", textAlign: "center" }}
+                        className="row ml-10 w-100 d-flex justify-content-center align-items-center"
                       >
                         Select a chat to start messaging
                       </h3>

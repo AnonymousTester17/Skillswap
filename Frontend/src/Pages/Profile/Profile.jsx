@@ -81,6 +81,12 @@ const Profile = () => {
     }
   };
 
+
+
+
+
+
+
   return (
     <div className={styles["profile-container"]}>
       {user?.username !== username ? "" : <h2 className={styles["profile-heading"]}>My Profile</h2>}
@@ -99,10 +105,10 @@ const Profile = () => {
                   <img src={profileUser?.picture} alt="Profile" />
                 </div>
                 {/* Name */}
-                <div className={styles["misc"]}>
+                <div className={styles["profile-content"]}>
                   <h1 className={styles["profile-name"]}>{profileUser?.name}</h1>
                   {/* Rating */}
-                  <div className={styles["rating"]} style={{ marginLeft: "2rem" }}>
+                  <div className={styles["rating"]}>
                     {/* Rating stars */}
                     <span className={styles["rating-stars"]}>
                       {profileUser?.rating

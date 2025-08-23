@@ -163,10 +163,23 @@
 
 @media (max-width: 780px) {
   .chatContainer {
-    display: flex;
     flex-direction: column;
   }
+  .chatLeft {
+    flex: none;
+    width: 100%;
+    height: 40%;
+  }
+  .chatRight {
+    flex: none;
+    width: 100%;
+    height: 60%;
+  }
   .modalContent {
-    padding: 0px;
+    padding: 20px;
+    width: 90%;
+  }
+  .scheduleModalContent {
+    min-width: 90%;
   }
 }

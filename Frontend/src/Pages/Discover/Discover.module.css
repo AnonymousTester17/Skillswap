@@ -109,3 +109,9 @@
     justify-content: center;
   }
 }
+
+@media (max-width: 425px) {
+  .discoverHeading {
+    font-size: 1.2rem;
+  }
+}

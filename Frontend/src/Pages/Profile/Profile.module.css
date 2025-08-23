@@ -4,14 +4,13 @@
   margin-left: 2rem;
   font-family: "Roboto";
   font-size: 1.5rem;
-  
 }
 
 .container {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  margin: 0 3.5rem; 
+  margin: 0 3.5rem;
 }
 
 .profile-box {
@@ -29,20 +28,28 @@
   align-items: center;
 }
 
-.bio-box, .skills, .education {
-  padding: 0 20px;
+.bio-box,
+.skills,
+.education,
+.projects {
+  padding: 20px;
   border-radius: 10px;
   box-shadow: 0px 0px 3px 0.5px var(--highlighter);
 }
 
-.bio-box > h2, .skills > h2, .education > h2 {
-  padding: 20px 0;
+.bio-box > h2,
+.skills > h2,
+.education > h2,
+.projects > h2 {
+  padding-bottom: 10px;
   font-family: "Roboto";
   font-size: 1.5rem;
   border-bottom: 2px dotted oklch(90.1% 0.076 70.697);
 }
 
-.bio-box > div, .skills > div, .education > div {
+.bio-box > div,
+.skills > div,
+.education > div {
   margin: 1.5rem 2rem;
   font-size: 1.1rem;
 }
@@ -64,7 +71,6 @@
   border: 5px solid var(--highlighter);
 }
 
-
 .profile-name {
   font-size: 1.5rem;
   font-family: "Roboto";
@@ -75,6 +81,7 @@
 
 .rating {
   margin-top: 10px;
+  margin-left: 2rem;
 }
 
 .rating-stars {
@@ -209,39 +216,89 @@
 }
 
 @media (max-width: 768px) {
-  .left-div {
+  .container {
+    margin: 0 1rem;
+  }
+
+  .buttons {
     display: flex;
     flex-direction: column;
-  }
-
-  .edit-button {
-    display: flex;
-    align-self: center;
-    margin-right: 0px !important;
-  }
-
-  .profile-box,
-  .profile-photo {
-    display: flex;
     align-items: center;
-    justify-content: center;
+    margin-top: 1rem;
   }
-
   .connect-button,
-  .rating,
-  .profile-name {
-    margin-left: 0px !important;
+  .report-button {
+    margin-left: 0;
+    margin-bottom: 1rem;
   }
-  .report-button,
-  .connect-button {
-    padding: 5px 10px;
-  }
+}
 
-  .misc {
+@media (max-width: 425px) {
+  .container {
+    margin: 0 1rem;
+  }
+  .profile-heading {
+    margin-left: 0;
+    font-size: 1.2rem;
+  }
+  .bio-box > h2,
+.skills > h2,
+.education > h2,
+.projects > h2 {
+  font-size: 1.2rem;
+}
+.bio-box > div {
+  font-size: 1rem;
+}
+.profile-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+  .profile-box {
+    justify-content: center;
+  }
+  .left-div {
+    flex-direction: column;
+    text-align: center;
+  }
+  .profile-name {
+    margin-left: 0;
+    font-size: 1.2rem;
+  }
+.rating {
+  margin-top: 0;
+  margin-left: 0;
+}
+.portfolio-links {
+  margin-top: 0;
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0;
+}
+  .buttons {
     display: flex;
-    margin: auto;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    gap: 10px;
+    margin-top: 1rem;
+  }
+  .connect-button,
+  .report-button {
+    margin-left: 0;
+    margin-bottom: 0;
+    margin-top: 0;
+
+  }
+  .edit-links {
+    margin-left: 0;
+    align-items: center;
+  }
+  .edit-button {
+    margin-top: 1rem;
+  }
+  .skill-box {
+    font-size: 0.8rem;
   }
 }
